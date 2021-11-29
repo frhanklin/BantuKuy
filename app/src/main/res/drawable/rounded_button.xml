@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+<!--    android:tint="#FF00BD56"-->
+<!--    android:tintMode="src_over">-->
+
+<!--    <solid android:color="#FF00BD56" />-->
+    <solid android:color="@color/primary_button_one"/>
+    <corners
+        android:radius="25dp" />
+
+</shape>

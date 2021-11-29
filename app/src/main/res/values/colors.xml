@@ -9,4 +9,10 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="primary_background">#FF4B3869</color>
+    <color name="primary_field_background">#FF664E88</color>
+    <color name="primary_text_hint_foreground">#99FFFFFF</color>
+    <color name="primary_text_foreground">#FFFFFFFF</color>
+    <color name="primary_button_one">#FF00BD56</color>
+    <color name="primary_button_two">#FF3E00FF</color>
+
 </resources>
