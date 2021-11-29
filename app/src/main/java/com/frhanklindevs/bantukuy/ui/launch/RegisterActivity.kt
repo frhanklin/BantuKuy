@@ -3,31 +3,30 @@ package com.frhanklindevs.bantukuy.ui.launch
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.frhanklindevs.bantukuy.databinding.ActivityLoginBinding
+import com.frhanklindevs.bantukuy.databinding.ActivityRegisterBinding
 
-class LoginActivity : AppCompatActivity() {
-    private var _binding : ActivityLoginBinding? = null
+class RegisterActivity : AppCompatActivity() {
+    private var _binding : ActivityRegisterBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _binding = ActivityLoginBinding.inflate(layoutInflater)
+        _binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         supportActionBar?.hide()
 
         setFunctionality()
-
     }
 
     private fun setFunctionality() {
-        binding.loginBtnRegister.setOnClickListener {
-            val intent = Intent(this, RegisterActivity::class.java)
+        binding.registerBtnLogin.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         }
 
-        binding.loginBtnLogin.setOnClickListener {
+        binding.registerBtnRegister.setOnClickListener {
 
         }
     }
@@ -41,10 +40,8 @@ class LoginActivity : AppCompatActivity() {
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
     }
 
-
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
     }
-
 }

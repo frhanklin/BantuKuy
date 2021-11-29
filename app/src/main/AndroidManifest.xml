@@ -10,8 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BantuKuy" >
         <activity
+            android:name=".ui.launch.RegisterActivity"
+            android:exported="true"
+            android:launchMode="singleInstance" />
+
+        <activity
             android:name=".ui.launch.LoginActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:launchMode="singleInstance" />
         <activity
             android:name=".ui.launch.SplashScreen"
             android:exported="true" >
