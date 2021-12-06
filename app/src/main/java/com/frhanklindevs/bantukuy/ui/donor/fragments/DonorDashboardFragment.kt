@@ -1,4 +1,4 @@
-package com.frhanklindevs.bantukuy.ui.donor
+package com.frhanklindevs.bantukuy.ui.donor.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

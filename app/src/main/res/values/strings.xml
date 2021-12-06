@@ -5,4 +5,7 @@
     <string name="more"><u>selengkapnya</u></string>
     <string name="title_bantu_cari">Temukan Panti</string>
     <string name="orphanage">Panti Asuhan</string>
+    <string name="near">Panti Terdekat</string>
+    <string name="nursing">Panti Jompo</string>
+    <string name="donor_greetings">Mau bantu panti mana hari ini?</string>
 </resources>

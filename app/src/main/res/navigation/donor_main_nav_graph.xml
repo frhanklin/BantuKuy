@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/donor_main_nav_graph"
+    app:startDestination="@id/donorDashboardFragment">
+
+    <fragment
+        android:id="@+id/donorDashboardFragment"
+        android:name="com.frhanklindevs.bantukuy.ui.donor.fragments.DonorDashboardFragment"
+        android:label="fragment_donor_dashboard"
+        tools:layout="@layout/fragment_donor_dashboard" >
+        <action
+            android:id="@+id/action_donorDashboardFragment_to_donorSearchFragment"
+            app:destination="@id/donorSearchFragment" />
+        <action
+            android:id="@+id/action_donorDashboardFragment_to_donorDonationBoxFragment"
+            app:destination="@id/donorDonationBoxFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/donorSearchFragment"
+        android:name="com.frhanklindevs.bantukuy.ui.donor.fragments.DonorSearchFragment"
+        android:label="fragment_donor_search"
+        tools:layout="@layout/fragment_donor_search" />
+    <fragment
+        android:id="@+id/donorDonationBoxFragment"
+        android:name="com.frhanklindevs.bantukuy.ui.donor.fragments.DonorDonationBoxFragment"
+        android:label="fragment_donor_donation_box"
+        tools:layout="@layout/fragment_donor_donation_box" />
+</navigation>
