@@ -8,4 +8,6 @@
     <string name="near">Panti Terdekat</string>
     <string name="nursing">Panti Jompo</string>
     <string name="donor_greetings">Mau bantu panti mana hari ini?</string>
+    <string name="donor_user_greetings">Hai, %s</string>
+    <string name="title_bantu_donasi">Barang Sumbanganku</string>
 </resources>

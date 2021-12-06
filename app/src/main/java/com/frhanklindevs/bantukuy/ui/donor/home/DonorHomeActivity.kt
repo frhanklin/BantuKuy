@@ -19,7 +19,9 @@ class DonorHomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setUpBottomNavigation()
+        supportActionBar?.hide()
     }
+
 
     private fun setUpBottomNavigation() {
         val bottomNav = binding.bottomNavMain

@@ -7,6 +7,8 @@
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/drawable/ic_close.xml" value="0.21822916666666667" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/drawable/ic_search.xml" value="0.21822916666666667" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/drawable/rounded_background_primary_one.xml" value="0.21822916666666667" />
+        <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/drawable/rounded_background_secondary_2.xml" value="0.2171875" />
+        <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/drawable/rounded_background_secondary_3.xml" value="0.2171875" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/drawable/rounded_background_secondary_one.xml" value="0.21822916666666667" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/drawable/rounded_background_white.xml" value="0.21822916666666667" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/drawable/rounded_button.xml" value="0.1" />
@@ -23,6 +25,8 @@
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/layout/activity_register.xml" value="0.14" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/layout/activity_splash_screen.xml" value="0.25" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/layout/fragment_bantu_cari_widget.xml" value="0.22" />
+        <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/layout/fragment_bantu_donasi_widget.xml" value="0.9" />
+        <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/layout/fragment_donation_box_widget.xml" value="0.20104166666666667" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/layout/fragment_donor_dashboard.xml" value="0.48534798534798534" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/layout/fragment_donor_donation_box.xml" value="0.20572916666666666" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/layout/fragment_donor_search.xml" value="0.20572916666666666" />
