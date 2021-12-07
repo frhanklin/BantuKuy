@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.donor.widgets.DonationBoxWidget">
+
+    <TextView
+        android:id="@+id/donation_box_tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="13sp"
+        android:textColor="@color/secondary_text_one"
+        android:fontFamily="@font/oxygen_bold_family"
+        android:text="@string/title_donation_box"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/donation_box_tv_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="@color/secondary_text_one"
+        android:fontFamily="@font/oxygen_bold_family"
+        android:text="@string/more"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/donation_box_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_background_secondary_2"
+        app:layout_constraintTop_toBottomOf="@id/donation_box_tv_title"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/box_content_house_target_placeholder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            style="@style/Oxygen_Bold_12_White"
+            android:text="@string/target"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/box_content_house_target_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            style="@style/Oxygen_Bold_12_White"
+            android:maxLines="2"
+            tools:text="Dummy Panti Asuhan di Jakarta Raya Indonesia Maksimal 80 karakter"
+            app:layout_constraintStart_toEndOf="@id/box_donation_detail_placeholder"
+            app:layout_constraintEnd_toStartOf="@id/box_btn_set_target_house"
+            app:layout_constraintTop_toTopOf="@id/box_content_house_target_placeholder"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/box_btn_set_target_house"
+            android:layout_width="60dp"
+            android:layout_height="0dp"
+            android:text="Pilih"
+            android:layout_marginEnd="8dp"
+            android:textSize="14sp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/inter_black_family"
+            android:background="@drawable/rounded_background_primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/box_content_house_target_placeholder"
+            app:layout_constraintBottom_toBottomOf="@id/box_content_house_target_text"/>
+
+        <TextView
+            android:id="@+id/box_donation_detail_placeholder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            style="@style/Oxygen_Bold_12_White"
+            android:text="@string/donation_detail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/box_content_house_target_text"/>
+
+        <TextView
+            android:id="@+id/box_donation_detail_cash_placeholder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/Oxygen_Bold_12_White"
+            android:text="@string/cash_placeholder"
+            app:layout_constraintStart_toEndOf="@id/box_donation_detail_placeholder"
+            app:layout_constraintTop_toTopOf="@id/box_donation_detail_placeholder"/>
+
+        <TextView
+            android:id="@+id/box_donation_detail_cash_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:gravity="start"
+            style="@style/Oxygen_Bold_12_White"
+            tools:text="Rp 26.549.682"
+            app:layout_constraintStart_toEndOf="@id/box_donation_detail_goods_placeholder"
+            app:layout_constraintEnd_toStartOf="@id/box_btn_set_details"
+            app:layout_constraintTop_toTopOf="@id/box_donation_detail_cash_placeholder"/>
+
+        <TextView
+            android:id="@+id/box_donation_detail_goods_placeholder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            style="@style/Oxygen_Bold_12_White"
+            android:text="@string/goods_placeholder"
+            app:layout_constraintStart_toEndOf="@id/box_donation_detail_placeholder"
+            app:layout_constraintTop_toBottomOf="@id/box_donation_detail_cash_placeholder"/>
+
+        <TextView
+            android:id="@+id/box_donation_detail_goods_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:gravity="start"
+            style="@style/Oxygen_Bold_12_White"
+            tools:text="25 barang"
+            app:layout_constraintStart_toEndOf="@id/box_donation_detail_goods_placeholder"
+            app:layout_constraintEnd_toStartOf="@id/box_btn_set_details"
+            app:layout_constraintTop_toTopOf="@id/box_donation_detail_goods_placeholder"/>
+
+        <TextView
+            android:id="@+id/box_donation_detail_expedition_placeholder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            style="@style/Oxygen_Bold_12_White"
+            android:text="@string/expedition_placeholder"
+            app:layout_constraintStart_toEndOf="@id/box_donation_detail_placeholder"
+            app:layout_constraintTop_toBottomOf="@id/box_donation_detail_goods_placeholder"/>
+
+        <TextView
+            android:id="@+id/box_donation_detail_expedition_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:gravity="start"
+            style="@style/Oxygen_Bold_12_White"
+            tools:text="Rp 70.000"
+            app:layout_constraintStart_toEndOf="@id/box_donation_detail_goods_placeholder"
+            app:layout_constraintEnd_toStartOf="@id/box_btn_set_details"
+            app:layout_constraintTop_toTopOf="@id/box_donation_detail_expedition_placeholder"/>
+
+
+        <TextView
+            android:id="@+id/box_donation_total_placeholder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            style="@style/Oxygen_Bold_12_White"
+            android:text="@string/total"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/box_donation_detail_expedition_placeholder"/>
+
+        <TextView
+            android:id="@+id/box_donation_total_payment_placeholder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/Oxygen_Bold_12_White"
+            android:text="@string/total_cash"
+            app:layout_constraintStart_toEndOf="@id/box_donation_detail_placeholder"
+            app:layout_constraintTop_toTopOf="@id/box_donation_total_placeholder"/>
+
+        <TextView
+            android:id="@+id/box_donation_total_payment_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:gravity="start"
+            style="@style/Oxygen_Bold_12_White"
+            tools:text="Rp 26.619.682"
+            app:layout_constraintStart_toEndOf="@id/box_donation_detail_goods_placeholder"
+            app:layout_constraintEnd_toStartOf="@id/box_btn_set_details"
+            app:layout_constraintTop_toTopOf="@id/box_donation_total_payment_placeholder"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/box_btn_set_details"
+            android:layout_width="60dp"
+            android:layout_height="0dp"
+            android:text="Ubah"
+            android:layout_marginEnd="8dp"
+            android:textSize="14sp"
+            android:textAllCaps="false"
+            android:fontFamily="@font/inter_black_family"
+            android:background="@drawable/rounded_background_primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/box_donation_detail_placeholder"
+            app:layout_constraintBottom_toBottomOf="@id/box_donation_total_payment_placeholder"/>
+
+
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/login_btn_login"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/rounded_button"
+            android:text="DONASIKAN"
+            android:textColor="@color/white"
+            android:fontFamily="@font/inter_black_family"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/box_donation_total_payment_placeholder" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="223dp" />
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

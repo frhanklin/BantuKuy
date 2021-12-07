@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.frhanklindevs.bantukuy.databinding.ActivityLoginBinding
+import com.frhanklindevs.bantukuy.ui.donor.home.DonorHomeActivity
 
 class LoginActivity : AppCompatActivity() {
     private var _binding : ActivityLoginBinding? = null
@@ -28,7 +29,10 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.loginBtnLogin.setOnClickListener {
-
+            val intent = Intent(this, DonorHomeActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+            finish()
         }
     }
 

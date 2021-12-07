@@ -15,4 +15,11 @@
     <color name="primary_button_one">#FF00BD56</color>
     <color name="primary_button_two">#FF3E00FF</color>
 
+    <color name="secondary_text_one">#FF000000</color>
+    <color name="secondary_text_two">#FFCF7500</color>
+    <color name="secondary_text_three">#FFA9E4D7</color>
+    <color name="secondary_back_one">#FFF0A500</color>
+    <color name="secondary_back_two">#FFCF7500</color>
+    <color name="secondary_back_threw">#FF00BD56</color>
+
 </resources>
