@@ -10,4 +10,13 @@
     <string name="donor_greetings">Mau bantu panti mana hari ini?</string>
     <string name="donor_user_greetings">Hai, %s</string>
     <string name="title_bantu_donasi">Barang Sumbanganku</string>
+    <string name="title_donation_box">Kotak Sumbanganku</string>
+    <string name="target">Tujuan : </string>
+    <string name="house_target">%s</string>
+    <string name="donation_detail">Bantuan : </string>
+    <string name="cash_placeholder">Uang (Tunai)</string>
+    <string name="goods_placeholder">Barang (Sumbanganku)</string>
+    <string name="total">Total : </string>
+    <string name="total_cash">Pembayaran</string>
+    <string name="expedition_placeholder">Jasa Pengiriman</string>
 </resources>
