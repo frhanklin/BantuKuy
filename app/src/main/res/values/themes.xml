@@ -18,11 +18,40 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
-    <style name="Oxygen_Bold_12_White">
+    <style name="Oxygen_Bold_White">
         <item name="fontFamily">@font/oxygen_bold_family</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">12sp</item>
-
-
     </style>
+
+    <style name="Oxygen_Bold_White_12" parent="Oxygen_Bold_White">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Oxygen_Bold_White_14" parent="Oxygen_Bold_White">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Oxygen_Bold_White_24" parent="Oxygen_Bold_White">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+
+    <style name="Oxygen_Bold_Black" parent="Oxygen_Bold_White">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Oxygen_Bold_Black_12" parent="Oxygen_Bold_Black">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="Oxygen_Bold_Black_14" parent="Oxygen_Bold_Black">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Oxygen_Bold_Black_24" parent="Oxygen_Bold_Black">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+
+
 </resources>
