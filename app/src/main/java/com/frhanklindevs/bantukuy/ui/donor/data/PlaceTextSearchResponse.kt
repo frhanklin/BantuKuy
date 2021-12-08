@@ -11,7 +11,7 @@ data class PlaceTextSearchResponse(
 	val nextPageToken: String? = null,
 
 	@field:SerializedName("html_attributions")
-	val htmlAttributions: List<Any?>? = null,
+	val htmlAttributions: List<String?>? = null,
 
 	@field:SerializedName("results")
 	val results: List<PlaceItem?>? = null,
@@ -110,7 +110,7 @@ data class PlaceItem(
 	val formattedAddress: String? = null,
 
 	@field:SerializedName("types")
-	val types: List<Any?>? = null,
+	val types: List<String?>? = null,
 
 	@field:SerializedName("business_status")
 	val businessStatus: String? = null,
@@ -146,7 +146,7 @@ data class PlaceItem(
 	val placeId: String? = null,
 
 	@field:SerializedName("photos")
-	val photos: List<Any?>? = null,
+	val photos: List<PhotosItem?>? = null,
 
 	@field:SerializedName("opening_hours")
 	val openingHours: OpeningHours? = null,

@@ -21,5 +21,6 @@
     <color name="secondary_back_one">#FFF0A500</color>
     <color name="secondary_back_two">#FFCF7500</color>
     <color name="secondary_back_threw">#FF00BD56</color>
+    <color name="placeholder">#6FB6B6B6</color>
 
 </resources>
