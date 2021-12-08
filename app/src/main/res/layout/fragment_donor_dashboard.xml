@@ -18,12 +18,8 @@
             android:id="@+id/donor_dash_tv_greetings_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:textColor="@color/secondary_text_one"
-            android:fontFamily="@font/oxygen_bold"
-            tools:text="Hai, Username"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            style="@style/Oxygen_Bold_Black_24"
+            tools:text="Hai, Username"/>
 
         <TextView
             android:id="@+id/donor_dash_tv_greetings_subtitle"
@@ -31,12 +27,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:textSize="14sp"
+            style="@style/Oxygen_Bold_Black_14"
             android:textColor="@color/secondary_text_two"
-            android:fontFamily="@font/oxygen_bold"
-            android:text="@string/donor_greetings"
-            app:layout_constraintStart_toStartOf="@id/donor_dash_tv_greetings_title"
-            app:layout_constraintTop_toBottomOf="@id/donor_dash_tv_greetings_title"/>
+            android:text="@string/donor_greetings"/>
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/donor_dash_fg_widget1"
@@ -44,10 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="8dp"
-            android:name="com.frhanklindevs.bantukuy.ui.donor.widgets.BantuCariWidget"
-            app:layout_constraintTop_toBottomOf="@id/donor_dash_tv_greetings_subtitle"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            android:name="com.frhanklindevs.bantukuy.ui.donor.widgets.BantuCariWidget"/>
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/donor_dash_fg_widget2"
@@ -55,10 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:name="com.frhanklindevs.bantukuy.ui.donor.widgets.BantuDonasiWidget"
-            app:layout_constraintTop_toBottomOf="@id/donor_dash_fg_widget1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            android:name="com.frhanklindevs.bantukuy.ui.donor.widgets.BantuDonasiWidget"/>
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/donor_dash_fg_widget3"
@@ -66,10 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:name="com.frhanklindevs.bantukuy.ui.donor.widgets.DonationBoxWidget"
-            app:layout_constraintTop_toBottomOf="@id/donor_dash_fg_widget2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            android:name="com.frhanklindevs.bantukuy.ui.donor.widgets.DonationBoxWidget"/>
 
 
 

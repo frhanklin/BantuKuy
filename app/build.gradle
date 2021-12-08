@@ -20,6 +20,13 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "API_KEY", '"AIzaSyBVTTpQgnCqmXLBwqajCRdNrHFYAU9ym4w"')
+        buildConfigField("String", "API_PLACEHOLDER", '"&key="')
+        buildConfigField("String", "PHOTO_URL", '"https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference="')
+
+
+
     }
 
     buildTypes {
