@@ -1,4 +1,4 @@
-package com.frhanklindevs.bantukuy.ui.donor.adapters
+package com.frhanklindevs.bantukuy.ui.donor.fragments.search
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,12 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.frhanklindevs.bantukuy.BuildConfig
 import com.frhanklindevs.bantukuy.R
 import com.frhanklindevs.bantukuy.databinding.ItemsHomeBinding
 import com.frhanklindevs.bantukuy.ui.donor.data.PlaceItem
+import com.frhanklindevs.bantukuy.ui.donor.utils.BantuKuyDev
 
-class SearchHomesAdapter(private val listHomes: ArrayList<PlaceItem>): RecyclerView.Adapter<SearchHomesAdapter.HomeViewHolder>() {
+class DonorSearchAdapter(private val listHomes: List<PlaceItem>): RecyclerView.Adapter<DonorSearchAdapter.HomeViewHolder>() {
 
     private lateinit var onItemClickCallback: OnItemClickCallback
 
@@ -28,6 +28,8 @@ class SearchHomesAdapter(private val listHomes: ArrayList<PlaceItem>): RecyclerV
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
         val home = listHomes[position]
         val photoUrl = PHOTO_URL + home.photos?.get(0)?.photoReference + API_PLACEHOLDER + API_KEY
+        println("Photo Url: $photoUrl")
+//        val photo = "https://awsimages.detik.net.id/community/media/visual/2020/06/22/jawara-world-landscape-photographer-3.png?w=750&q=90"
 
         with(holder) {
             binding.searchTvTitle.text = home.name
@@ -57,9 +59,9 @@ class SearchHomesAdapter(private val listHomes: ArrayList<PlaceItem>): RecyclerV
     }
 
     companion object{
-        private const val PHOTO_URL = BuildConfig.PHOTO_URL
-        private const val API_PLACEHOLDER = BuildConfig.API_PLACEHOLDER
-        private const val API_KEY = BuildConfig.API_KEY
+        private const val PHOTO_URL = BantuKuyDev.PHOTO_URL
+        private const val API_PLACEHOLDER = BantuKuyDev.API_PLACEHOLDER
+        private const val API_KEY = BantuKuyDev.API_KEY
 
     }
 }
