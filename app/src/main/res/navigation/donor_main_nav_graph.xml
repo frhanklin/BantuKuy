@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/donorSearchFragment"
-        android:name="com.frhanklindevs.bantukuy.ui.donor.fragments.DonorSearchFragment"
+        android:name="com.frhanklindevs.bantukuy.ui.donor.fragments.search.DonorSearchFragment"
         android:label="fragment_donor_search"
         tools:layout="@layout/fragment_donor_search" />
     <fragment
