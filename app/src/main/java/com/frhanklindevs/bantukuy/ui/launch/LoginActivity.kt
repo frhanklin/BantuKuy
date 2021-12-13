@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.frhanklindevs.bantukuy.databinding.ActivityLoginBinding
-import com.frhanklindevs.bantukuy.ui.donor.home.DonorHomeActivity
+import com.frhanklindevs.bantukuy.donor.ui.home.DonorHomeActivity
 
 class LoginActivity : AppCompatActivity() {
     private var _binding : ActivityLoginBinding? = null
