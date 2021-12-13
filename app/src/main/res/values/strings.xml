@@ -20,4 +20,14 @@
     <string name="total_cash">Pembayaran</string>
     <string name="expedition_placeholder">Jasa Pengiriman</string>
     <string name="search_image">Search Image</string>
+    <string name="detail_image">Detail Image</string>
+    <string name="back">Back</string>
+    <string name="location">Location</string>
+    <string name="opening_hours">Opening hours</string>
+    <string name="image_item">Image Item</string>
+    <string name="contact_home">Contact Home</string>
+    <string name="visit_site">Visit site</string>
+    <string name="see_at_maps">See at Maps</string>
+    <string name="donate_here">Donate here</string>
+    <string name="pilih">Pilih</string>
 </resources>
