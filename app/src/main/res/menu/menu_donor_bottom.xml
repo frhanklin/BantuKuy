@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/donorDashboardFragment"
+        android:id="@+id/nav_tab_dashboard"
         android:icon="@drawable/ic_baseline_dashboard_24"
         android:title="Dashboard"/>
 
     <item
-        android:id="@+id/donorSearchFragment"
+        android:id="@+id/nav_tab_search"
         android:icon="@drawable/ic_baseline_search_24"
         android:title="Search"/>
 
     <item
-        android:id="@+id/donorDonationBoxFragment"
+        android:id="@+id/nav_tab_donation_box"
         android:icon="@drawable/ic_baseline_add_circle_24"
         android:title="Donation Box"/>
 
