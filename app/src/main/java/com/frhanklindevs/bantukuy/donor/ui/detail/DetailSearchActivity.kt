@@ -79,6 +79,8 @@ class DetailSearchActivity : AppCompatActivity() {
                     binding.viewPager.adapter = galleryPagerAdapter
                     binding.tabLayout.setupWithViewPager(binding.viewPager, true)
 
+//                    val pagerAdapter = PageView
+
                 }
             }
         }

@@ -78,7 +78,7 @@ class ImageGalleryFragment : Fragment() {
         }
 
         private const val EXTRA_IMAGE = "extra_image"
-        private const val PHOTO_URL = BantuKuyDev.PHOTO_URL
+        private const val PHOTO_URL = BantuKuyDev.PHOTO_URL_2
         private const val API_PLACEHOLDER = BantuKuyDev.API_PLACEHOLDER
         private const val API_KEY = BantuKuyDev.API_KEY
 
