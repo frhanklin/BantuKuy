@@ -56,6 +56,10 @@
         <item name="android:textSize">20sp</item>
     </style>
 
+    <style name="Oxygen_Bold_Black_18" parent="Oxygen_Bold_Black">
+        <item name="android:textSize">18sp</item>
+    </style>
+
 
 
 </resources>

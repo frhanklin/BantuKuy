@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_tab_donation_box"
+    app:startDestination="@id/fragment_donation_box"
+    tools:ignore="UnusedNavigation">
+
+
+    <fragment
+        android:id="@+id/fragment_donation_box"
+        android:label="Donation Box"
+        android:name="com.frhanklindevs.bantukuy.donor.ui.fragments.DonorDonationBoxFragment">
+
+    </fragment>
+
+
+</navigation>
