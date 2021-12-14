@@ -46,19 +46,16 @@ class DonorSearchFragment : Fragment(), DonorSearchAdapter.OnItemClickCallback {
             val factory = ViewModelFactory.getInstance(requireActivity())
             viewModel = ViewModelProvider(this, factory)[DonorSearchViewModel::class.java]
 
-            viewModel.homesResults.observe(viewLifecycleOwner, homesObserver)
             viewModel.isLoading.observe(viewLifecycleOwner, loadingStateObserver)
-            viewModel.isWarned.observe(viewLifecycleOwner, warningObserver)
+            viewModel.warningText.observe(viewLifecycleOwner, warningObserver)
+            viewModel.recyclerState.observe(viewLifecycleOwner, recyclerObserver)
 
+            viewModel.homesResults.observe(viewLifecycleOwner, homesObserver)
+            viewModel.queryText.observe(viewLifecycleOwner, queryObserver)
             viewModel.setQuery("")
+
             //Checkpoint mark
-
-
-
-            searchAdapter = DonorSearchAdapter(DummyData.getDummyLiveData().value!!)
-
-            //Put this line inside observer
-            searchAdapter.setOnItemClickCallback(this)
+            searchAdapter = DonorSearchAdapter()
 
             binding.donorSearchRvSearch.layoutManager = GridLayoutManager(context, SPAN_COUNT)
             binding.donorSearchRvSearch.setHasFixedSize(true)
@@ -67,16 +64,27 @@ class DonorSearchFragment : Fragment(), DonorSearchAdapter.OnItemClickCallback {
     }
 
     private val homesObserver = Observer<List<PlaceItem>> {
-        searchAdapter = DonorSearchAdapter(it)
+        if (it != null) {
+            searchAdapter.setListHomes(it)
+            searchAdapter.setOnItemClickCallback(this)
+        }
     }
 
     private val loadingStateObserver = Observer<Boolean> {
         binding.progressBar.visibility = if (it) View.VISIBLE else View.GONE
     }
 
-    private val warningObserver = Observer<Boolean> {
-        binding.warningText.visibility = if (it) View.VISIBLE else View.GONE
-        binding.warningText.text = viewModel.warningText.value
+    private val warningObserver = Observer<String> {
+        binding.warningText.visibility = if (it == "") View.GONE else View.VISIBLE
+        binding.warningText.text = it
+    }
+
+    private val recyclerObserver = Observer<Boolean> {
+        binding.donorSearchRvSearch.visibility = if (it) View.VISIBLE else View.GONE
+    }
+
+    private val queryObserver = Observer<String> {
+        viewModel.searchHomes()
     }
 
 
