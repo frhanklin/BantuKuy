@@ -24,9 +24,7 @@ class ImageGalleryFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (arguments != null) {
-            imageUrl = requireArguments().getString(EXTRA_IMAGE) as String
-        }
+        imageUrl = activity?.intent?.extras?.getString(EXTRA_IMAGE) as String
     }
 
     override fun onCreateView(

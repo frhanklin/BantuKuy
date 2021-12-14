@@ -3,7 +3,6 @@ package com.frhanklindevs.bantukuy.donor.ui.fragments.search
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -11,18 +10,8 @@ import com.frhanklindevs.bantukuy.R
 import com.frhanklindevs.bantukuy.databinding.ItemsHomeBinding
 import com.frhanklindevs.bantukuy.donor.data.PlaceItem
 import com.frhanklindevs.bantukuy.utils.BantuKuyDev
-import com.frhanklindevs.bantukuy.utils.HomeDiffCallback
 
-class DonorSearchAdapter: RecyclerView.Adapter<DonorSearchAdapter.HomeViewHolder>() {
-
-    private val listHomes = ArrayList<PlaceItem>()
-    fun setListHomes(listHomes: List<PlaceItem>) {
-        val diffCallback = HomeDiffCallback(this.listHomes, listHomes)
-        val diffResult = DiffUtil.calculateDiff(diffCallback)
-        this.listHomes.clear()
-        this.listHomes.addAll(listHomes)
-        diffResult.dispatchUpdatesTo(this)
-    }
+class DonorSearchAdapter(private val listHomes: List<PlaceItem>): RecyclerView.Adapter<DonorSearchAdapter.HomeViewHolder>() {
 
     private lateinit var onItemClickCallback: OnItemClickCallback
 

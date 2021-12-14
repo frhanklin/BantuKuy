@@ -29,14 +29,8 @@ class DonorSearchViewModel: ViewModel() {
     private val _warningText = MutableLiveData<String>()
     val warningText: LiveData<String> = _warningText
 
-    private val _recyclerState = MutableLiveData<Boolean>()
-    val recyclerState: LiveData<Boolean> = _recyclerState
-
-
-
     fun searchHomes() {
-        showLoading()
-        hideRecycler()
+        enableLoading()
 
         //TODO: Implement JSON API Call, set Live Data
         val client = ApiConfig.getApiService().getPlaceTextSearch(queryText.value as String, API_KEY)
@@ -45,68 +39,55 @@ class DonorSearchViewModel: ViewModel() {
                 call: Call<PlaceTextSearchResponse>,
                 response: Response<PlaceTextSearchResponse>
             ) {
-                showWarning("Memuat data")
 
                 if (response.isSuccessful) {
-                    if (response.body()?.status.equals("OK")) {
+                    if (response.body()?.results?.isNotEmpty() as Boolean) {
                         _homesResults.value = (response.body()!!.results as List<PlaceItem>?)!!
-                        hideWarning()
-                        showRecycler()
+                        disableWarning()
                     } else {
-                        showWarning("Data panti tidak ditemukan")
+                        enableWarning("Data panti tidak ditemukan")
                     }
                 } else {
-                    showWarning("Terjadi kesalahan")
+                    enableWarning("Terjadi kesalahan")
                 }
             }
 
             override fun onFailure(call: Call<PlaceTextSearchResponse>, t: Throwable) {
-                showWarning("Pencarian gagal")
-                println("Error code: -1")
-
+                disableLoading()
+                enableWarning("Pencarian gagal")
             }
 
         })
 
         //Currently used: Dummy Data
 
-        hideLoading()
+        disableLoading()
     }
 
     fun setQuery(query: String) {
-        if (query.isDigitsOnly() || query.isEmpty() || query.isBlank()) {
+        if (query.isDigitsOnly() || query.isNullOrBlank() || query.isEmpty()) {
             _queryText.value = "Panti asuhan di Jakarta"
         } else {
             _queryText.value = query
         }
     }
 
-
-
-    private fun showLoading() {
+    private fun enableLoading() {
         _isLoading.value = true
     }
 
-    private fun hideLoading() {
+    private fun disableLoading() {
         _isLoading.value = false
     }
 
-    private fun showWarning(message: String) {
+    private fun enableWarning(message: String) {
         _isWarned.value = true
         _warningText.value = message
     }
 
-    private fun hideWarning() {
+    private fun disableWarning() {
         _isWarned.value = false
         _warningText.value = ""
-    }
-
-    private fun showRecycler() {
-        _recyclerState.value = true
-    }
-
-    private fun hideRecycler() {
-        _recyclerState.value = false
     }
 
     companion object {
