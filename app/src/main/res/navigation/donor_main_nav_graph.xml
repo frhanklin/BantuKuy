@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/donorDashboardFragment"
-        android:name="com.frhanklindevs.bantukuy.donor.ui.fragments.DonorDashboardFragment"
+        android:name="com.frhanklindevs.bantukuy.donor.ui.fragments.dashboard.DonorDashboardFragment"
         android:label="fragment_donor_dashboard"
         tools:layout="@layout/fragment_donor_dashboard" >
         <action
@@ -24,7 +24,7 @@
         tools:layout="@layout/fragment_donor_search" />
     <fragment
         android:id="@+id/donorDonationBoxFragment"
-        android:name="com.frhanklindevs.bantukuy.donor.ui.fragments.DonorDonationBoxFragment"
+        android:name="com.frhanklindevs.bantukuy.donor.ui.fragments.box.DonorDonationBoxFragment"
         android:label="fragment_donor_donation_box"
         tools:layout="@layout/fragment_donor_donation_box" />
 </navigation>

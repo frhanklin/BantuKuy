@@ -7,7 +7,7 @@
     android:background="@color/white"
     android:padding="16dp"
 
-    tools:context=".donor.ui.fragments.DonorDashboardFragment">
+    tools:context=".donor.ui.fragments.dashboard.DonorDashboardFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="8dp"
-            android:name="com.frhanklindevs.bantukuy.donor.ui.widgets.BantuCariWidget"/>
+            android:name="com.frhanklindevs.bantukuy.donor.ui.fragments.dashboard.widgets.BantuCariWidget"/>
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/donor_dash_fg_widget2"
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:name="com.frhanklindevs.bantukuy.donor.ui.widgets.BantuDonasiWidget"/>
+            android:name="com.frhanklindevs.bantukuy.donor.ui.fragments.dashboard.widgets.BantuDonasiWidget"/>
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/donor_dash_fg_widget3"
@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:name="com.frhanklindevs.bantukuy.donor.ui.widgets.DonationBoxWidget"/>
+            android:name="com.frhanklindevs.bantukuy.donor.ui.fragments.dashboard.widgets.DonationBoxWidget"/>
 
 
 

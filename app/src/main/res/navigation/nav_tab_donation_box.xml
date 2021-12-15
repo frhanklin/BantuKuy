@@ -10,7 +10,7 @@
     <fragment
         android:id="@+id/fragment_donation_box"
         android:label="Donation Box"
-        android:name="com.frhanklindevs.bantukuy.donor.ui.fragments.DonorDonationBoxFragment">
+        android:name="com.frhanklindevs.bantukuy.donor.ui.fragments.box.DonorDonationBoxFragment">
 
     </fragment>
 

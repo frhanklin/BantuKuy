@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="17dp">
+
+    <!--BantuDonasiTitle-->
+    <TextView
+        android:id="@+id/donor_box_tv_greetings_title"
+        style="@style/Oxygen_Bold_Black_24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bantudonasi"
+        tools:text="BantuDonasi"/>
+
+    <!--Home Container-->
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/box_frag_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:name="com.frhanklindevs.bantukuy.donor.ui.fragments.box.item.DonationBoxItemHome"/>
+
+    <!--Donation Box Container-->
+    <LinearLayout
+        android:id="@+id/dbox_box_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:id="@+id/dbox_box_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Oxygen_Bold_Black_18"
+            android:text="@string/kotak_sumbanganku"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <!--Cash Donation Container-->
+        <!--Title-->
+        <TextView
+            android:id="@+id/dbox_box_money_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            style="@style/Oxygen_Bold_Black_18"
+            android:text="@string/uang" />
+
+        <!--Goods Donation Container-->
+        <!--Title-->
+        <TextView
+            android:id="@+id/dbox_box_goods_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            style="@style/Oxygen_Bold_Black_18"
+            android:text="@string/barang"/>
+
+        <!--Expedition Donation Container-->
+        <!--Title-->
+        <TextView
+            android:id="@+id/dbox_box_expedition_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Oxygen_Bold_Black_18"
+            android:layout_marginTop="8dp"
+            android:text="@string/expedition"/>
+        <!--Content-->
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/box_frag_expedition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:name="com.frhanklindevs.bantukuy.donor.ui.fragments.box.item.DonationBoxItemExpedition"/>
+
+
+
+
+
+    </LinearLayout>
+
+    <!--Donation Box Overview-->
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/box_frag_overview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:name="com.frhanklindevs.bantukuy.donor.ui.fragments.box.item.DonationBoxOverview"/>
+
+    <!--Placeholder-->
+    <LinearLayout
+        android:id="@+id/donation_box_placeholder"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="vertical"/>
+
+
+
+
+</LinearLayout>
