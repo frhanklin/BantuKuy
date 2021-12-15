@@ -2,18 +2,15 @@ package com.frhanklindevs.bantukuy.donor.ui.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.LiveData
-import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.frhanklindevs.bantukuy.R
 import com.frhanklindevs.bantukuy.databinding.ActivityDonorHomeBinding
-import com.frhanklindevs.bantukuy.donor.ui.fragments.DonorDashboardFragment
-import com.frhanklindevs.bantukuy.donor.ui.fragments.DonorDonationBoxFragment
+import com.frhanklindevs.bantukuy.donor.ui.fragments.dashboard.DonorDashboardFragment
+import com.frhanklindevs.bantukuy.donor.ui.fragments.box.DonorDonationBoxFragment
 import com.frhanklindevs.bantukuy.donor.ui.fragments.search.DonorSearchFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-import androidx.annotation.NonNull
 import androidx.fragment.app.Fragment
 
 
@@ -85,10 +82,10 @@ class DonorHomeActivity : AppCompatActivity() {
     }
 
     companion object {
-        private val fragment1= DonorDashboardFragment()
-        private val fragment2= DonorSearchFragment()
-        private val fragment3= DonorDonationBoxFragment()
-        private var active : Fragment = fragment1
+        val fragment1= DonorDashboardFragment()
+        val fragment2= DonorSearchFragment()
+        val fragment3= DonorDonationBoxFragment()
+        var active : Fragment = fragment1
 
     }
 }

@@ -39,4 +39,22 @@
     <string name="uang">Uang</string>
     <string name="cash">Tunai</string>
     <string name="ubah">Ubah</string>
+    <string name="barang">Barang</string>
+    <string name="weight">Bobot (kg) :</string>
+    <string name="expedition">Jasa Pengiriman</string>
+    <string name="penyedia_layanan_pengiriman">Penyedia Layanan Pengiriman</string>
+    <string name="donor_overview">Ringkasan Donasi</string>
+    <string name="rupiah">Rp</string>
+    <string name="kilogram">kg</string>
+    <string name="select_payment">Pilih Pembawyaran</string>
+    <string name="home_not_selected">Kamu belum memilih panti</string>
+    <string name="home_name">Nama Panti Asuhan</string>
+    <string name="home_address">Alamat Panti Asuhan</string>
+    <string name="format_money">Rp %s</string>
+    <string name="money_not_enough">Jumlah minimum donasi belum tercapai \n(Rp 10.000)</string>
+    <string name="expedition_service">Layanan yang digunakan</string>
+    <string name="goods_cat">Nama kategori barang</string>
+    <string name="format_weight">Jumlah: %s kg</string>
+    <string name="hapus">Hapus</string>
+    <string name="pilih_panti">Pilih Panti</string>
 </resources>

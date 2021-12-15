@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dbox_expedition_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:layout_marginTop="8dp"
+    tools:context=".donor.ui.fragments.box.item.DonationBoxItemExpedition">
+
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/dbox_expedition_contents"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+
+        <ImageView
+            android:id="@+id/dbox_expedition_img"
+            android:layout_width="120dp"
+            android:layout_height="90dp"
+            android:background="@drawable/rounded_background_white_border"
+            android:src="@drawable/ic_baseline_airplane_ticket_80"
+            android:contentDescription="@string/uang"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/dbox_expedition_name"
+            style="@style/Oxygen_Bold_Black_14"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="@string/penyedia_layanan_pengiriman"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/dbox_expedition_img"
+            app:layout_constraintStart_toEndOf="@id/dbox_expedition_img" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="4dp"
+            android:text="@string/ubah"
+            android:textAllCaps="false"
+            android:fontFamily="@font/inter_black_family"
+            android:background="@drawable/rounded_background_primary_border"
+            app:layout_constraintBottom_toTopOf="@id/dbox_expedition_value"
+            app:layout_constraintStart_toEndOf="@id/dbox_expedition_img"/>
+
+        <TextView
+            android:id="@+id/dbox_expedition_value"
+            style="@style/Oxygen_Bold_Black_12"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:text="@string/expedition_service"
+            android:maxLines="2"
+            android:ellipsize="end"
+            app:layout_constraintStart_toEndOf="@id/dbox_expedition_img"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/dbox_expedition_img"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

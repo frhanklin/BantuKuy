@@ -10,7 +10,7 @@
     <fragment
         android:id="@+id/fragment_dashboard"
         android:label="Dashboard"
-        android:name="com.frhanklindevs.bantukuy.donor.ui.fragments.DonorDashboardFragment">
+        android:name="com.frhanklindevs.bantukuy.donor.ui.fragments.dashboard.DonorDashboardFragment">
 
     </fragment>
 

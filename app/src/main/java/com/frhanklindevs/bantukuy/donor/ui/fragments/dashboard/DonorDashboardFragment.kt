@@ -1,4 +1,4 @@
-package com.frhanklindevs.bantukuy.donor.ui.fragments
+package com.frhanklindevs.bantukuy.donor.ui.fragments.dashboard
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
