@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -15,6 +16,7 @@ import com.frhanklindevs.bantukuy.donor.data.PlaceItem
 import com.frhanklindevs.bantukuy.donor.ui.detail.DetailSearchActivity
 import com.frhanklindevs.bantukuy.utils.DummyData
 import com.frhanklindevs.bantukuy.utils.ViewModelFactory
+import java.util.*
 
 class DonorSearchFragment : Fragment(), DonorSearchAdapter.OnItemClickCallback {
 
@@ -61,6 +63,34 @@ class DonorSearchFragment : Fragment(), DonorSearchAdapter.OnItemClickCallback {
             binding.donorSearchRvSearch.setHasFixedSize(true)
             binding.donorSearchRvSearch.adapter = searchAdapter
         }
+
+        setViewBehaviors()
+
+    }
+
+    private fun setViewBehaviors() {
+
+
+
+        binding.donorSearchSvHome.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                var text = query.lowercase(Locale.getDefault())
+                if (!text.contains("panti", true)) {
+                    text = "panti $text"
+                    if (!text.contains("jakarta", true)) {
+                        text = "$text jakarta"
+                    }
+                }
+
+                viewModel.setQuery(text)
+
+                return true
+            }
+
+            override fun onQueryTextChange(text: String): Boolean {
+                return false
+            }
+        })
     }
 
     private val homesObserver = Observer<List<PlaceItem>> {
