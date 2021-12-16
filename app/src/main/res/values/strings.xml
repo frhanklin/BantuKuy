@@ -58,4 +58,9 @@
     <string name="hapus">Hapus</string>
     <string name="pilih_panti">Pilih Panti</string>
     <string name="cari">Cari</string>
+    <string name="add">Tambah</string>
+    <string name="edit">Ubah</string>
+    <string name="saat_ini_ada">Saat ini ada</string>
+    <string name="format_kilogram">%s kg</string>
+    <string name="barang_di_kotak">kg barang di kotak</string>
 </resources>

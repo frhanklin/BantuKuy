@@ -35,6 +35,10 @@
         <item name="android:textSize">24sp</item>
     </style>
 
+    <style name="Oxygen_Bold_White_18" parent="Oxygen_Bold_White">
+        <item name="android:textSize">18sp</item>
+    </style>
+
 
     <style name="Oxygen_Bold_Black" parent="Oxygen_Bold_White">
         <item name="android:textColor">@color/black</item>
