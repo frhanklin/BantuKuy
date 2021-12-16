@@ -1,9 +1,11 @@
 package com.frhanklindevs.bantukuy.donor.ui.detail
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -29,13 +31,63 @@ class DetailSearchActivity : AppCompatActivity() {
         _binding = ActivityDetailSearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
         //Gunakan ketika sudah pakai API
         placeId = intent.extras?.getString(EXTRA_PLACE) as String
 
+        supportActionBar?.hide()
+
 
         initView()
+        setViewBehaviors()
+    }
+
+    private fun setViewBehaviors() {
+        //Back Button
+        binding.detailBtnBack.setOnClickListener {
+            onBackPressed()
+        }
+
+        //Contact Button
+        binding.detailBtnContact.setOnClickListener {
+            val phoneNumber = viewModel.placeDetail.value?.formattedPhoneNumber
+            if (phoneNumber != null) {
+                val intent = Intent(Intent.ACTION_DIAL)
+                intent.data = Uri.parse("tel:$phoneNumber")
+                startActivity(intent)
+            } else {
+                Toast.makeText(applicationContext, "Tidak terdapat nomor telepon", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        //Visit Web Button
+        binding.detailBtnSite.setOnClickListener {
+            val url = viewModel.placeDetail.value?.website
+            if (url != null) {
+                val intent = Intent(Intent.ACTION_VIEW)
+                intent.data = Uri.parse(url)
+                startActivity(intent)
+            } else {
+                Toast.makeText(applicationContext, "Tidak terdapat situs web", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        //Open Maps Button
+        binding.detailBtnMaps.setOnClickListener {
+            val urlMaps = viewModel.placeDetail.value?.url
+            if (urlMaps != null) {
+                val intent = Intent(Intent.ACTION_VIEW)
+                intent.data = Uri.parse(urlMaps)
+                startActivity(intent)
+            } else {
+                Toast.makeText(applicationContext, "Terjadi kesalahan", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        //Select Home Button
+        binding.detailBtnSelect.setOnClickListener {
+
+        }
+
     }
 
     private fun initView() {
@@ -99,18 +151,6 @@ class DetailSearchActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            android.R.id.home -> {
-                onBackPressed()
-                true
-            }
-            else -> {
-                super.onOptionsItemSelected(item)
-            }
-        }
     }
 
     companion object {

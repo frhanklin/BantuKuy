@@ -7,6 +7,8 @@
     android:background="@color/white"
     tools:context=".donor.ui.detail.DetailSearchActivity">
 
+
+
     <ScrollView
         android:id="@+id/detail_container"
         android:layout_width="match_parent"
@@ -52,6 +54,9 @@
 
 
             </LinearLayout>
+
+
+
 
             <!--Contents-->
             <LinearLayout
@@ -177,7 +182,7 @@
     </LinearLayout>
 
 
-<!--Bottom Buttons-->
+    <!--Bottom Buttons-->
     <LinearLayout
         android:id="@+id/detail_menu_bottom"
         android:layout_width="match_parent"
@@ -229,5 +234,18 @@
             android:src="@drawable/ic_box_open_solid"/>
 
     </LinearLayout>
+
+    <!--Back Button-->
+    <ImageButton
+        android:id="@+id/detail_btn_back"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:contentDescription="@string/back"
+        android:background="@drawable/rounded_gradient_edit"
+        android:src="@drawable/ic_baseline_arrow_back_24_white"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

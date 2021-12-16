@@ -73,9 +73,9 @@ class BantuCariWidget : Fragment() {
                 text = query.lowercase(Locale.getDefault())
                 if (!text.contains("panti", true)) {
                     text = "panti $text"
-                    if (!text.contains("jakarta", true)) {
-                        text = "$text jakarta"
-                    }
+                }
+                if (!text.contains("jakarta", true)) {
+                    text = "$text jakarta"
                 }
 
                 val bantuSearchView = activity?.findViewById(R.id.donor_search_sv_home) as SearchView

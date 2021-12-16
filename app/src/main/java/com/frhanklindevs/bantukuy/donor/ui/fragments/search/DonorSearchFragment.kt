@@ -77,9 +77,9 @@ class DonorSearchFragment : Fragment(), DonorSearchAdapter.OnItemClickCallback {
                 var text = query.lowercase(Locale.getDefault())
                 if (!text.contains("panti", true)) {
                     text = "panti $text"
-                    if (!text.contains("jakarta", true)) {
-                        text = "$text jakarta"
-                    }
+                }
+                if (!text.contains("jakarta", true)) {
+                    text = "$text jakarta"
                 }
 
                 viewModel.setQuery(text)
@@ -95,9 +95,9 @@ class DonorSearchFragment : Fragment(), DonorSearchAdapter.OnItemClickCallback {
             var text = binding.donorSearchSvHome.query.toString()
             if (!text.contains("panti", true)) {
                 text = "panti $text"
-                if (!text.contains("jakarta", true)) {
-                    text = "$text jakarta"
-                }
+            }
+            if (!text.contains("jakarta", true)) {
+                text = "$text jakarta"
             }
 
             viewModel.setQuery(text)
