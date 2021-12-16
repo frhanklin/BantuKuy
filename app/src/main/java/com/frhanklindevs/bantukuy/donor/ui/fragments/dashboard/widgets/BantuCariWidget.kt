@@ -1,7 +1,6 @@
 package com.frhanklindevs.bantukuy.donor.ui.fragments.dashboard.widgets
 
 import android.os.Bundle
-import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +9,7 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.SearchView
 import com.frhanklindevs.bantukuy.R
 import com.frhanklindevs.bantukuy.databinding.FragmentBantuCariWidgetBinding
-import com.frhanklindevs.bantukuy.donor.ui.home.DonorHomeActivity
+import com.frhanklindevs.bantukuy.donor.ui.bottomnav.BottomNavListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.util.*
 
@@ -41,7 +40,7 @@ class BantuCariWidget : Fragment() {
 
     private fun setViewBehaviors() {
         val bottomNavigationView = activity?.findViewById(R.id.bottom_nav_main) as BottomNavigationView
-        bottomNavigationView.setOnItemSelectedListener(bottomNavListener)
+        bottomNavigationView.setOnItemSelectedListener(BottomNavListener.getBottomNavigationListenerFragment(this))
         var text: String
 
         binding.bantuCariQuickNear.setOnClickListener{
@@ -107,33 +106,5 @@ class BantuCariWidget : Fragment() {
             bottomNavigationView.selectedItemId = R.id.nav_tab_search
         }
     }
-
-    private val bottomNavListener =
-        BottomNavigationView.OnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.nav_tab_dashboard -> {
-                    activity?.supportFragmentManager?.beginTransaction()?.hide(DonorHomeActivity.active)?.show(
-                        DonorHomeActivity.fragment1
-                    )?.commit()
-                    DonorHomeActivity.active = DonorHomeActivity.fragment1
-                    return@OnNavigationItemSelectedListener true
-                }
-                R.id.nav_tab_search -> {
-                    activity?.supportFragmentManager?.beginTransaction()?.hide(DonorHomeActivity.active)?.show(
-                        DonorHomeActivity.fragment2
-                    )?.commit()
-                    DonorHomeActivity.active = DonorHomeActivity.fragment2
-                    return@OnNavigationItemSelectedListener true
-                }
-                R.id.nav_tab_donation_box -> {
-                    activity?.supportFragmentManager?.beginTransaction()?.hide(DonorHomeActivity.active)?.show(
-                        DonorHomeActivity.fragment3
-                    )?.commit()
-                    DonorHomeActivity.active = DonorHomeActivity.fragment3
-                    return@OnNavigationItemSelectedListener true
-                }
-            }
-            false
-        }
 
 }

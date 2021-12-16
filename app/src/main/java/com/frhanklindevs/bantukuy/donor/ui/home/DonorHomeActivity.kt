@@ -12,6 +12,7 @@ import com.frhanklindevs.bantukuy.donor.ui.fragments.search.DonorSearchFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 import androidx.fragment.app.Fragment
+import com.frhanklindevs.bantukuy.donor.ui.bottomnav.BottomNavListener
 
 
 class DonorHomeActivity : AppCompatActivity() {
@@ -19,26 +20,18 @@ class DonorHomeActivity : AppCompatActivity() {
     private var _binding : ActivityDonorHomeBinding? = null
     private val binding get() = _binding!!
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         _binding = ActivityDonorHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        setUpBottomNavigation()
-
-        binding.bottomNavMain.setOnNavigationItemSelectedListener(bottomNavListener)
-
-
+//        binding.bottomNavMain.setOnNavigationItemSelectedListener(bottomNavListener)
+        binding.bottomNavMain.setOnNavigationItemSelectedListener(BottomNavListener.getBottomNavigationListenerActivity(this))
 
         supportFragmentManager.beginTransaction().add(R.id.nav_host_main, fragment3, "3").hide(fragment3).commit()
         supportFragmentManager.beginTransaction().add(R.id.nav_host_main, fragment2, "2").hide(fragment2).commit()
-
         supportFragmentManager.beginTransaction().add(R.id.nav_host_main, fragment1, "1").commit()
-
-
-
 
         supportActionBar?.hide()
     }
@@ -64,17 +57,6 @@ class DonorHomeActivity : AppCompatActivity() {
             }
             false
         }
-
-
-    private fun setUpBottomNavigation() {
-        val bottomNav = binding.bottomNavMain
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_main) as NavHostFragment
-
-        NavigationUI.setupWithNavController(
-            bottomNav,
-            navHostFragment.navController
-        )
-    }
 
     override fun onDestroy() {
         super.onDestroy()
