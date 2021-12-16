@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="8dp"
-            android:name="com.frhanklindevs.bantukuy.donor.ui.fragments.dashboard.widgets.BantuCariWidget"/>
+            android:name="com.frhanklindevs.bantukuy.donor.ui.fragments.dashboard.widgets.cari.BantuCariWidget"/>
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/donor_dash_fg_widget2"
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:name="com.frhanklindevs.bantukuy.donor.ui.fragments.dashboard.widgets.BantuDonasiWidget"/>
+            android:name="com.frhanklindevs.bantukuy.donor.ui.fragments.dashboard.widgets.donasi.BantuDonasiWidget"/>
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/donor_dash_fg_widget3"
@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:name="com.frhanklindevs.bantukuy.donor.ui.fragments.dashboard.widgets.DonationBoxWidget"/>
+            android:name="com.frhanklindevs.bantukuy.donor.ui.fragments.dashboard.widgets.box.DonationBoxWidget"/>
 
 
 

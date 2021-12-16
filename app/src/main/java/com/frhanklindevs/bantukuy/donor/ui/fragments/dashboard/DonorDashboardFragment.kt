@@ -5,31 +5,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import com.frhanklindevs.bantukuy.R
 import com.frhanklindevs.bantukuy.databinding.FragmentDonorDashboardBinding
+import com.frhanklindevs.bantukuy.utils.ViewModelFactory
 
 class DonorDashboardFragment : Fragment() {
 
     private var _binding : FragmentDonorDashboardBinding? = null
     private val binding get() = _binding!!
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    private lateinit var viewModel: DonorDashboardViewModel
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View {
         // Inflate the layout for this fragment
         _binding = FragmentDonorDashboardBinding.inflate(inflater, container, false)
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        setUserGreetings()
-    }
-
-    private fun setUserGreetings() {
-        binding.donorDashTvGreetingsTitle.text = getString(R.string.donor_user_greetings, "username")
     }
 
     override fun onDestroyView() {
@@ -37,5 +28,20 @@ class DonorDashboardFragment : Fragment() {
         _binding = null
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        if (activity != null) {
+            setViewModel()
+        }
+    }
+
+    private fun setViewModel() {
+        val factory = ViewModelFactory.getInstance(requireActivity())
+        viewModel = ViewModelProvider(this, factory)[DonorDashboardViewModel::class.java]
+
+        viewModel.username.observe(viewLifecycleOwner, { username ->
+            binding.donorDashTvGreetingsTitle.text = getString(R.string.donor_user_greetings, username)
+        })
+    }
 }

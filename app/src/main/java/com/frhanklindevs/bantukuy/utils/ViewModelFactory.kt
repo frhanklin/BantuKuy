@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.frhanklindevs.bantukuy.donor.ui.detail.DetailSearchViewModel
+import com.frhanklindevs.bantukuy.donor.ui.fragments.dashboard.DonorDashboardViewModel
+import com.frhanklindevs.bantukuy.donor.ui.fragments.dashboard.widgets.donasi.BantuDonasiWidgetViewModel
 import com.frhanklindevs.bantukuy.donor.ui.fragments.search.DonorSearchViewModel
 
 class ViewModelFactory : ViewModelProvider.NewInstanceFactory() {
@@ -28,6 +30,12 @@ class ViewModelFactory : ViewModelProvider.NewInstanceFactory() {
             }
             modelClass.isAssignableFrom(DetailSearchViewModel::class.java) -> {
                 DetailSearchViewModel() as T
+            }
+            modelClass.isAssignableFrom(DonorDashboardViewModel::class.java) -> {
+                DonorDashboardViewModel() as T
+            }
+            modelClass.isAssignableFrom(BantuDonasiWidgetViewModel::class.java) -> {
+                BantuDonasiWidgetViewModel() as T
             }
             else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
         }

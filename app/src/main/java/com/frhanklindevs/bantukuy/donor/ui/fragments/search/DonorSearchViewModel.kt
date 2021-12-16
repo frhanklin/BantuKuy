@@ -38,7 +38,6 @@ class DonorSearchViewModel: ViewModel() {
         showLoading()
         hideRecycler()
 
-        //TODO: Implement JSON API Call, set Live Data
         val client = ApiConfig.getApiService().getPlaceTextSearch(queryText.value as String, API_KEY)
         client.enqueue(object : Callback<PlaceTextSearchResponse> {
             override fun onResponse(
@@ -65,10 +64,7 @@ class DonorSearchViewModel: ViewModel() {
                 println("Error code: -1")
 
             }
-
         })
-
-        //Currently used: Dummy Data
 
         hideLoading()
     }
@@ -80,8 +76,6 @@ class DonorSearchViewModel: ViewModel() {
             _queryText.value = query
         }
     }
-
-
 
     private fun showLoading() {
         _isLoading.value = true
