@@ -13,6 +13,7 @@
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/drawable-v24/rounded_background_white_border.xml" value="0.20989583333333334" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/drawable-v24/rounded_bottom_nav.xml" value="0.21145833333333333" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/drawable-v24/rounded_card_search.xml" value="0.20989583333333334" />
+        <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/drawable/ic_bantukuy.xml" value="0.234375" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/drawable/ic_baseline_access_time_24_primary.xml" value="0.24166666666666667" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/drawable/ic_baseline_add_circle_24.xml" value="0.21145833333333333" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/drawable/ic_baseline_airplane_ticket_80.xml" value="0.18796296296296297" />
@@ -31,6 +32,7 @@
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/drawable/ic_globe_solid.xml" value="0.24166666666666667" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/drawable/ic_search.xml" value="0.21822916666666667" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/drawable/item_selected.xml" value="0.24166666666666667" />
+        <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/drawable/rounded_background_primary.xml" value="0.234375" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/drawable/rounded_background_primary_one.xml" value="0.21822916666666667" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/drawable/rounded_background_secondary_1.xml" value="0.24166666666666667" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/drawable/rounded_background_secondary_2.xml" value="0.2171875" />
@@ -51,7 +53,7 @@
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/font/oxygen_light_family.xml" value="0.1" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/font/roboto_family.xml" value="0.22395833333333334" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/font/roboto_light_family.xml" value="0.22395833333333334" />
-        <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/layout/activity_detail_search.xml" value="0.33" />
+        <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/layout/activity_detail_search.xml" value="0.67" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/layout/activity_donor_home.xml" value="0.1" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/layout/activity_donor_home2.xml" value="0.3868974042027194" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/layout/activity_login.xml" value="0.22" />
@@ -71,7 +73,7 @@
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/layout/fragment_donation_box_item_money.xml" value="0.67" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/layout/fragment_donation_box_money_item.xml" value="0.75" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/layout/fragment_donation_box_overview.xml" value="0.33" />
-        <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/layout/fragment_donation_box_widget.xml" value="0.3997233748271093" />
+        <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/layout/fragment_donation_box_widget.xml" value="0.22" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/layout/fragment_donor_dashboard.xml" value="0.10642570281124498" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/layout/fragment_donor_donation_box.xml" value="0.22" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/layout/fragment_donor_search.xml" value="0.21286141575274178" />
@@ -81,6 +83,10 @@
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/layout/items_home.xml" value="0.33" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/menu/menu_donor_bottom.xml" value="0.1" />
+        <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.234375" />
+        <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/mipmap-anydpi-v26/ic_launcher_bantukuy.xml" value="0.234375" />
+        <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/mipmap-anydpi-v26/ic_launcher_bantukuy_round.xml" value="0.234375" />
+        <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.234375" />
       </map>
     </option>
   </component>

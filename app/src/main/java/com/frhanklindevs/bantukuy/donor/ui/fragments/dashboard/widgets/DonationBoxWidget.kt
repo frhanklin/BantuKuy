@@ -6,15 +6,77 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.frhanklindevs.bantukuy.R
+import com.frhanklindevs.bantukuy.databinding.FragmentDonationBoxWidgetBinding
+import com.frhanklindevs.bantukuy.donor.ui.home.DonorHomeActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class DonationBoxWidget : Fragment() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    private var _binding : FragmentDonationBoxWidgetBinding? = null
+    private val binding get() = _binding!!
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_donation_box_widget, container, false)
+        _binding = FragmentDonationBoxWidgetBinding.inflate(inflater, container, false)
+        return binding.root
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setViewBehaviors()
+    }
+
+    private fun setViewBehaviors() {
+
+        val bottomNavigationView = activity?.findViewById(R.id.bottom_nav_main) as BottomNavigationView
+        bottomNavigationView.setOnItemSelectedListener(bottomNavListener)
+
+        binding.boxBtnSetTargetHouse.setOnClickListener {
+            bottomNavigationView.selectedItemId = R.id.nav_tab_search
+        }
+
+        binding.boxBtnSetDetails.setOnClickListener {
+            bottomNavigationView.selectedItemId = R.id.nav_tab_donation_box
+        }
+
+        binding.boxBtnDonate.setOnClickListener {
+            bottomNavigationView.selectedItemId = R.id.nav_tab_donation_box
+        }
+
+    }
+
+    private val bottomNavListener =
+        BottomNavigationView.OnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_tab_dashboard -> {
+                    activity?.supportFragmentManager?.beginTransaction()?.hide(DonorHomeActivity.active)?.show(
+                        DonorHomeActivity.fragment1
+                    )?.commit()
+                    DonorHomeActivity.active = DonorHomeActivity.fragment1
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.nav_tab_search -> {
+                    activity?.supportFragmentManager?.beginTransaction()?.hide(DonorHomeActivity.active)?.show(
+                        DonorHomeActivity.fragment2
+                    )?.commit()
+                    DonorHomeActivity.active = DonorHomeActivity.fragment2
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.nav_tab_donation_box -> {
+                    activity?.supportFragmentManager?.beginTransaction()?.hide(DonorHomeActivity.active)?.show(
+                        DonorHomeActivity.fragment3
+                    )?.commit()
+                    DonorHomeActivity.active = DonorHomeActivity.fragment3
+                    return@OnNavigationItemSelectedListener true
+                }
+            }
+            false
+        }
 
 }

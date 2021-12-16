@@ -14,8 +14,8 @@
     <string name="target">Tujuan : </string>
     <string name="house_target">%s</string>
     <string name="donation_detail">Bantuan : </string>
-    <string name="cash_placeholder">Uang (Tunai)</string>
-    <string name="goods_placeholder">Barang (Sumbanganku)</string>
+    <string name="cash_placeholder">Uang</string>
+    <string name="goods_placeholder">Barang</string>
     <string name="total">Total : </string>
     <string name="total_cash">Pembayaran</string>
     <string name="expedition_placeholder">Jasa Pengiriman</string>
@@ -63,4 +63,7 @@
     <string name="saat_ini_ada">Saat ini ada</string>
     <string name="format_kilogram">%s kg</string>
     <string name="barang_di_kotak">kg barang di kotak</string>
+    <string name="donate_now">DONASI SEKARANG</string>
+    <string name="placeholder_money">placeholder_money</string>
+    <string name="placeholder_kilogram">placeholder_kilogram</string>
 </resources>
