@@ -57,4 +57,5 @@
     <string name="format_weight">Jumlah: %s kg</string>
     <string name="hapus">Hapus</string>
     <string name="pilih_panti">Pilih Panti</string>
+    <string name="cari">Cari</string>
 </resources>

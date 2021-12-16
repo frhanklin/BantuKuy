@@ -91,6 +91,17 @@ class DonorSearchFragment : Fragment(), DonorSearchAdapter.OnItemClickCallback {
                 return false
             }
         })
+        binding.donorSearchBtnSvHome.setOnClickListener {
+            var text = binding.donorSearchSvHome.query.toString()
+            if (!text.contains("panti", true)) {
+                text = "panti $text"
+                if (!text.contains("jakarta", true)) {
+                    text = "$text jakarta"
+                }
+            }
+
+            viewModel.setQuery(text)
+        }
     }
 
     private val homesObserver = Observer<List<PlaceItem>> {
