@@ -41,10 +41,10 @@ class DonorDonationBoxFragment : Fragment() {
 
     private fun setViewFunctions() {
         bottomNavigationView = activity?.findViewById(R.id.bottom_nav_main) as BottomNavigationView
+        bottomNavigationView.setOnNavigationItemSelectedListener(bottomNavListener)
 
         if (binding.dboxWarningBtn.isVisible) {
             binding.dboxWarningBtn.setOnClickListener {
-                bottomNavigationView.setOnNavigationItemSelectedListener(bottomNavListener)
                 bottomNavigationView.selectedItemId = R.id.nav_tab_search
             }
         }

@@ -58,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:text="Cari"
+            android:text="@string/cari"
             android:textSize="16sp"
             android:textAllCaps="false"
             android:fontFamily="@font/inter_black_family"
@@ -86,10 +86,10 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/bantu_cari_quick_orphanage">
 
-                <androidx.appcompat.widget.AppCompatImageButton
+                <ImageView
                     android:id="@+id/bantu_cari_quick_near_img"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:background="#00000000"
                     android:src="@drawable/img_bantu_cari_quick_1" />
 
@@ -114,10 +114,10 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
 
-                <androidx.appcompat.widget.AppCompatImageButton
+                <ImageView
                     android:id="@+id/bantu_cari_quick_orphanage_img"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:background="#00000000"
                     android:src="@drawable/img_bantu_cari_quick_2" />
 
@@ -144,10 +144,10 @@
                 app:layout_constraintStart_toEndOf="@id/bantu_cari_quick_orphanage"
                 app:layout_constraintEnd_toEndOf="parent">
 
-                <androidx.appcompat.widget.AppCompatImageButton
+                <ImageView
                     android:id="@+id/bantu_cari_quick_nursing_img"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:background="#00000000"
                     android:src="@drawable/img_bantu_cari_quick_3" />
 
