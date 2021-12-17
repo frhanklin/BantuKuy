@@ -19,11 +19,11 @@
             android:exported="true"
             android:launchMode="singleTop" />
         <activity
-            android:name=".ui.launch.RegisterActivity"
+            android:name=".ui.launch.register.RegisterActivity"
             android:exported="true"
             android:noHistory="true" />
         <activity
-            android:name=".ui.launch.LoginActivity"
+            android:name=".ui.launch.login.LoginActivity"
             android:exported="true"
             android:launchMode="singleInstance" />
         <activity

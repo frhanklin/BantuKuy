@@ -91,7 +91,7 @@ class DetailSearchActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        val factory = ViewModelFactory.getInstance(this)
+        val factory = ViewModelFactory.getInstance(application)
         viewModel = ViewModelProvider(this, factory)[DetailSearchViewModel::class.java]
 
         viewModel.isContentVisible.observe(this, contentObserver)

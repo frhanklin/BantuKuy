@@ -40,7 +40,7 @@ class BantuDonasiWidget : Fragment() {
     }
 
     private fun setViewModel() {
-        val factory = ViewModelFactory.getInstance(requireActivity())
+        val factory = ViewModelFactory.getInstance(requireActivity().application)
         viewModel = ViewModelProvider(this, factory)[BantuDonasiWidgetViewModel::class.java]
 
         viewModel.isDonateable.observe(viewLifecycleOwner, {

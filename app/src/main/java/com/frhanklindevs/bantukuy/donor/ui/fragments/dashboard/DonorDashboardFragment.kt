@@ -37,7 +37,7 @@ class DonorDashboardFragment : Fragment() {
     }
 
     private fun setViewModel() {
-        val factory = ViewModelFactory.getInstance(requireActivity())
+        val factory = ViewModelFactory.getInstance(requireActivity().application)
         viewModel = ViewModelProvider(this, factory)[DonorDashboardViewModel::class.java]
 
         viewModel.username.observe(viewLifecycleOwner, { username ->

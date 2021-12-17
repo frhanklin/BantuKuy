@@ -6,9 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.lifecycle.ViewModelProvider
 import com.frhanklindevs.bantukuy.R
 import com.frhanklindevs.bantukuy.databinding.FragmentDonorDonationBoxBinding
 import com.frhanklindevs.bantukuy.donor.ui.bottomnav.BottomNavListener
+import com.frhanklindevs.bantukuy.donor.ui.fragments.dashboard.widgets.box.DonationBoxWidgetViewModel
+import com.frhanklindevs.bantukuy.utils.ViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class DonorDonationBoxFragment : Fragment() {
@@ -17,20 +20,37 @@ class DonorDonationBoxFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var bottomNavigationView: BottomNavigationView
+    private lateinit var viewModel: DonorDonationBoxViewModel
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View {
         // Inflate the layout for this fragment
         _binding = FragmentDonorDonationBoxBinding.inflate(inflater, container, false)
         return binding.root
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if (activity != null) {
+            setViewModel()
+        }
         setViewFunctions()
+    }
+
+    private fun setViewModel() {
+        val factory = ViewModelFactory.getInstance(requireActivity().application)
+        viewModel = ViewModelProvider(this, factory)[DonorDonationBoxViewModel::class.java]
+
+        viewModel.isDonateable.observe(viewLifecycleOwner, {
+            binding.dboxWarningContainer.visibility = if (it) View.GONE else View.VISIBLE
+            binding.dboxAllContents.visibility = if (it) View.VISIBLE else View.GONE
+        })
+
     }
 
     private fun setViewFunctions() {

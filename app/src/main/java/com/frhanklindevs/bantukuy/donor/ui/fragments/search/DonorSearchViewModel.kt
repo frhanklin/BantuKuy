@@ -1,5 +1,6 @@
 package com.frhanklindevs.bantukuy.donor.ui.fragments.search
 
+import android.app.Application
 import androidx.core.text.isDigitsOnly
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -12,7 +13,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DonorSearchViewModel: ViewModel() {
+class DonorSearchViewModel(application: Application): ViewModel() {
 
     private val _queryText = MutableLiveData<String>()
     val queryText: LiveData<String> = _queryText

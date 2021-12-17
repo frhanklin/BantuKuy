@@ -1,10 +1,11 @@
 package com.frhanklindevs.bantukuy.donor.ui.fragments.dashboard.widgets.donasi
 
+import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class BantuDonasiWidgetViewModel: ViewModel() {
+class BantuDonasiWidgetViewModel(application: Application): ViewModel() {
 
     private val _homeName = MutableLiveData<String>()
 
