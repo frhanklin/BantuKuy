@@ -1,5 +1,6 @@
 package com.frhanklindevs.bantukuy.donor.ui.detail
 
+import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,7 +12,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DetailSearchViewModel: ViewModel() {
+class DetailSearchViewModel(application: Application): ViewModel() {
 
     private val _placeDetail = MutableLiveData<PlaceDetails>()
     val placeDetail : LiveData<PlaceDetails> = _placeDetail

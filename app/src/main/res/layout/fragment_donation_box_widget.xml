@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    tools:context=".donor.ui.fragments.dashboard.widgets.DonationBoxWidget">
+    tools:context=".donor.ui.fragments.dashboard.widgets.box.DonationBoxWidget">
 
     <!--Title-->
     <TextView
@@ -33,7 +33,7 @@
         <!--Warning Text-->
         <TextView
             android:id="@+id/donation_box_warning"
-            android:visibility="visible"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             style="@style/Oxygen_Bold_White_18"
@@ -43,7 +43,7 @@
 
         <!--Contents-->
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:visibility="gone"
+            android:visibility="visible"
             android:id="@+id/donation_box_contents"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

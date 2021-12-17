@@ -14,7 +14,7 @@ android {
 
     defaultConfig {
         applicationId "com.frhanklindevs.bantukuy"
-        minSdk 21
+        minSdk 24
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -80,8 +80,8 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
     implementation 'androidx.paging:paging-runtime-ktx:3.1.0'
     implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
-    implementation 'androidx.room:room-runtime:2.3.0'
-    kapt 'androidx.room:room-compiler:2.3.0'
+    implementation 'androidx.room:room-runtime:2.4.0'
+    kapt 'androidx.room:room-compiler:2.4.0'
 
     implementation "com.github.bumptech.glide:glide:$glideVersion"
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"

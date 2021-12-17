@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import com.frhanklindevs.bantukuy.databinding.ActivitySplashScreenBinding
+import com.frhanklindevs.bantukuy.ui.launch.login.LoginActivity
 
 class SplashScreenActivity : AppCompatActivity() {
     private var _binding : ActivitySplashScreenBinding? = null

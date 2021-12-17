@@ -1,5 +1,6 @@
 package com.frhanklindevs.bantukuy.donor.ui.fragments.search
 
+import android.app.Application
 import androidx.core.text.isDigitsOnly
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -12,7 +13,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DonorSearchViewModel: ViewModel() {
+class DonorSearchViewModel(application: Application): ViewModel() {
 
     private val _queryText = MutableLiveData<String>()
     val queryText: LiveData<String> = _queryText
@@ -38,7 +39,6 @@ class DonorSearchViewModel: ViewModel() {
         showLoading()
         hideRecycler()
 
-        //TODO: Implement JSON API Call, set Live Data
         val client = ApiConfig.getApiService().getPlaceTextSearch(queryText.value as String, API_KEY)
         client.enqueue(object : Callback<PlaceTextSearchResponse> {
             override fun onResponse(
@@ -65,10 +65,7 @@ class DonorSearchViewModel: ViewModel() {
                 println("Error code: -1")
 
             }
-
         })
-
-        //Currently used: Dummy Data
 
         hideLoading()
     }
@@ -80,8 +77,6 @@ class DonorSearchViewModel: ViewModel() {
             _queryText.value = query
         }
     }
-
-
 
     private fun showLoading() {
         _isLoading.value = true

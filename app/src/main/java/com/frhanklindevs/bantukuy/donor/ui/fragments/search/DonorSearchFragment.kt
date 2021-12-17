@@ -45,7 +45,7 @@ class DonorSearchFragment : Fragment(), DonorSearchAdapter.OnItemClickCallback {
         super.onViewCreated(view, savedInstanceState)
 
         if (activity != null) {
-            val factory = ViewModelFactory.getInstance(requireActivity())
+            val factory = ViewModelFactory.getInstance(requireActivity().application)
             viewModel = ViewModelProvider(this, factory)[DonorSearchViewModel::class.java]
 
             viewModel.isLoading.observe(viewLifecycleOwner, loadingStateObserver)

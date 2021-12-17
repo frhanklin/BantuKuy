@@ -66,4 +66,5 @@
     <string name="donate_now">DONASI SEKARANG</string>
     <string name="placeholder_money">placeholder_money</string>
     <string name="placeholder_kilogram">placeholder_kilogram</string>
+    <string name="format_rupiah">Rp %s</string>
 </resources>
