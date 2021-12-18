@@ -12,10 +12,13 @@ interface UserDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(user: UserEntity)
 
-    @Query("SELECT * FROM userTable WHERE username=:userName")
-    fun getUser(userName: String): LiveData<List<UserEntity>>
+    @Query("SELECT * FROM user_table WHERE user_id=:userId")
+    fun getUserById(userId: Int): UserEntity
 
-    @Query("SELECT * FROM userTable")
-    fun getAllUser(): LiveData<List<UserEntity>>
+    @Query("SELECT * FROM user_table WHERE username=:username")
+    fun getUserByUsername(username: String): UserEntity
+
+    @Query("SELECT EXISTS(SELECT * FROM user_table WHERE username=:username)")
+    fun checkUsernameExists(username: String): Boolean
 
 }

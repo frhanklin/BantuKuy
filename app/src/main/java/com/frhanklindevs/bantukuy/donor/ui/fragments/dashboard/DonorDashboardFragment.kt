@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.frhanklindevs.bantukuy.R
 import com.frhanklindevs.bantukuy.databinding.FragmentDonorDashboardBinding
+import com.frhanklindevs.bantukuy.donor.ui.home.DonorHomeActivity
 import com.frhanklindevs.bantukuy.utils.ViewModelFactory
 
 class DonorDashboardFragment : Fragment() {
@@ -15,6 +16,7 @@ class DonorDashboardFragment : Fragment() {
     private var _binding : FragmentDonorDashboardBinding? = null
     private val binding get() = _binding!!
 
+    private var userId: Int = 0
     private lateinit var viewModel: DonorDashboardViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View {
@@ -32,6 +34,7 @@ class DonorDashboardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         if (activity != null) {
+            userId = requireActivity().intent.getIntExtra(DonorHomeActivity.EXTRA_USER_ID, 0)
             setViewModel()
         }
     }
@@ -39,7 +42,8 @@ class DonorDashboardFragment : Fragment() {
     private fun setViewModel() {
         val factory = ViewModelFactory.getInstance(requireActivity().application)
         viewModel = ViewModelProvider(this, factory)[DonorDashboardViewModel::class.java]
-
+        
+        viewModel.setUserId(userId)
         viewModel.username.observe(viewLifecycleOwner, { username ->
             binding.donorDashTvGreetingsTitle.text = getString(R.string.donor_user_greetings, username)
         })
