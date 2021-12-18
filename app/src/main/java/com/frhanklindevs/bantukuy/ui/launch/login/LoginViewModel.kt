@@ -12,6 +12,8 @@ class LoginViewModel(application: Application): ViewModel() {
 
     private val repository: BantuKuyRepository = BantuKuyRepository(application)
 
+    private val _userId = MutableLiveData<Int>()
+
     private val _warningText = MutableLiveData<String>()
     val warningText : LiveData<String> = _warningText
 
@@ -19,11 +21,13 @@ class LoginViewModel(application: Application): ViewModel() {
     val warningImg : LiveData<Int> = _warningImg
 
     fun verifyUser(username: String, password: String): Boolean {
-        val user = repository.getUser(username)
+        val userExists = repository.checkUsernameExists(username)
 
-        return if (user.value?.get(0) != null) {
-            if (user.value!!.get(0).password == password) {
-                true
+        return if (userExists) {
+            val user = repository.getUserByUsername(username)
+            if (user.password == password) {
+                _userId.value = user.userId
+                return true
             } else {
                 _warningText.value = "Password salah."
                 _warningImg.value = R.drawable.ic_close_white
@@ -51,5 +55,7 @@ class LoginViewModel(application: Application): ViewModel() {
 
 
     }
+
+    fun getUserId() = _userId.value
 
 }

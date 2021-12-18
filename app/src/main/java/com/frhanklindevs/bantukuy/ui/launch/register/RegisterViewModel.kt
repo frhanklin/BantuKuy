@@ -30,7 +30,7 @@ class RegisterViewModel(application: Application): ViewModel() {
             return false
         }
         if (!isEmailValid(email)) {
-            _warningImg.value = R.drawable.ic_pen
+            _warningImg.value = R.drawable.ic_baseline_alternate_email_24
             _warningText.value = "Email tidak valid"
             return false
         }
@@ -40,7 +40,7 @@ class RegisterViewModel(application: Application): ViewModel() {
             return false
         }
         if (usernameIsExists(userName)) {
-            _warningImg.value = R.drawable.ic_pen
+            _warningImg.value = R.drawable.ic_user_slash_solid
             _warningText.value = "Username tidak tersedia"
             return false
         }
@@ -50,7 +50,7 @@ class RegisterViewModel(application: Application): ViewModel() {
             return false
         }
         if (!isPasswordValid(password)) {
-            _warningImg.value = R.drawable.ic_pen
+            _warningImg.value = R.drawable.ic_baseline_password_24
             _warningText.value = "Password minimal berisi 8 karakter"
             return false
         }
@@ -60,12 +60,12 @@ class RegisterViewModel(application: Application): ViewModel() {
             return false
         }
         if (!isPasswordValid(passwordVerify)) {
-            _warningImg.value = R.drawable.ic_pen
+            _warningImg.value = R.drawable.ic_baseline_password_24
             _warningText.value = "Password minimal berisi 8 karakter"
             return false
         }
         if (!isPasswordSame(password, passwordVerify)) {
-            _warningImg.value = R.drawable.ic_pen
+            _warningImg.value = R.drawable.ic_baseline_password_24
             _warningText.value = "Kedua password tidak sama"
             return false
         }
@@ -88,13 +88,8 @@ class RegisterViewModel(application: Application): ViewModel() {
     }
 
     private fun usernameIsExists(userName: String): Boolean {
-        val user = repository.getUser(userName)
-        println("Searching: $userName")
-        println("Username in database: ${user.value?.get(0)?.userName} with ID ${user.value?.get(0)?.userId}")
-        println("Username exists state: ${user.value?.get(0)?.userName == userName}")
-
-
-        return user.value?.get(0)?.userName == userName
+        val existsInTable = repository.checkUsernameExists(userName)
+        return existsInTable
     }
     private fun isEmailValid(email: CharSequence): Boolean {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()

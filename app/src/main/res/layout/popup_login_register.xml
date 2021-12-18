@@ -13,8 +13,8 @@
         android:layout_height="100dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:padding="8dp"
-        tools:src="@drawable/ic_close_white"
+        android:padding="12dp"
+        tools:src="@drawable/ic_user_slash_solid"
         android:background="@drawable/circular_black_white_border"/>
     
     <TextView

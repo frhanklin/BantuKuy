@@ -26,7 +26,6 @@ class DonorHomeActivity : AppCompatActivity() {
         _binding = ActivityDonorHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        binding.bottomNavMain.setOnNavigationItemSelectedListener(bottomNavListener)
         binding.bottomNavMain.setOnNavigationItemSelectedListener(BottomNavListener.getBottomNavigationListenerActivity(this))
 
         supportFragmentManager.beginTransaction().add(R.id.nav_host_main, fragment3, "3").hide(fragment3).commit()
@@ -35,28 +34,6 @@ class DonorHomeActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
     }
-
-    private val bottomNavListener =
-        BottomNavigationView.OnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.nav_tab_dashboard -> {
-                    supportFragmentManager.beginTransaction().hide(active).show(fragment1).commit()
-                    active = fragment1
-                    return@OnNavigationItemSelectedListener true
-                }
-                R.id.nav_tab_search -> {
-                    supportFragmentManager.beginTransaction().hide(active).show(fragment2).commit()
-                    active = fragment2
-                    return@OnNavigationItemSelectedListener true
-                }
-                R.id.nav_tab_donation_box -> {
-                    supportFragmentManager.beginTransaction().hide(active).show(fragment3).commit()
-                    active = fragment3
-                    return@OnNavigationItemSelectedListener true
-                }
-            }
-            false
-        }
 
     override fun onDestroy() {
         super.onDestroy()
@@ -69,5 +46,6 @@ class DonorHomeActivity : AppCompatActivity() {
         val fragment3= DonorDonationBoxFragment()
         var active : Fragment = fragment1
 
+        const val EXTRA_USER_ID = "extra_user_id"
     }
 }

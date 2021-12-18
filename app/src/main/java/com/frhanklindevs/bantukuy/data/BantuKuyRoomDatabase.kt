@@ -26,7 +26,7 @@ abstract class BantuKuyRoomDatabase : RoomDatabase(){
                     INSTANCE = Room.databaseBuilder(context.applicationContext,
                         BantuKuyRoomDatabase::class.java,
                         "bantu_kuy_db"
-                    ).build()
+                    ).allowMainThreadQueries().build()
                 }
             }
             return INSTANCE as BantuKuyRoomDatabase
