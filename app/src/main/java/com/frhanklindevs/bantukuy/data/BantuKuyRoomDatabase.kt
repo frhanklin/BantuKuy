@@ -14,7 +14,8 @@ import com.frhanklindevs.bantukuy.donor.data.box.*
         DonationBoxEntity::class,
         DonationCashItems::class,
         DonationGoodsItems::class,
-        DonationExpeditionItem::class
+        DonationExpeditionItem::class,
+        ExpeditionServices::class
 
                ],
     exportSchema = true,

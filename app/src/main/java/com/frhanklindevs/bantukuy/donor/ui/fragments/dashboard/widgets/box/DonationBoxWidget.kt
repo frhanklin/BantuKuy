@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.frhanklindevs.bantukuy.R
 import com.frhanklindevs.bantukuy.databinding.FragmentDonationBoxWidgetBinding
 import com.frhanklindevs.bantukuy.donor.ui.bottomnav.BottomNavListener
+import com.frhanklindevs.bantukuy.donor.ui.home.DonorHomeActivity
 import com.frhanklindevs.bantukuy.utils.ViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.util.*
@@ -19,6 +20,7 @@ class DonationBoxWidget : Fragment() {
     private var _binding : FragmentDonationBoxWidgetBinding? = null
     private val binding get() = _binding!!
 
+    private var userId: Int = 0
     private lateinit var viewModel: DonationBoxWidgetViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View {
@@ -35,6 +37,7 @@ class DonationBoxWidget : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        userId = requireActivity().intent.getIntExtra(DonorHomeActivity.EXTRA_USER_ID, 0)
         setViewModel()
         setViewBehaviors()
     }
@@ -55,7 +58,7 @@ class DonationBoxWidget : Fragment() {
             binding.boxDonationDetailCashText.text = convertToRupiah(it)
         })
         viewModel.currentTotalDonationGoodsWeight.observe(viewLifecycleOwner, {
-            binding.boxDonationDetailGoodsText.text = it.toString()
+            binding.boxDonationDetailGoodsText.text = String.format(getString(R.string.format_kilogram), it.toString())
         })
         viewModel.currentTotalExpeditionFee.observe(viewLifecycleOwner, {
             binding.boxDonationDetailExpeditionText.text = convertToRupiah(it)
@@ -63,6 +66,8 @@ class DonationBoxWidget : Fragment() {
         viewModel.currentTotalCost.observe(viewLifecycleOwner, {
             binding.boxDonationTotalPaymentText.text = convertToRupiah(it)
         })
+
+        viewModel.setUserId(userId)
     }
 
     private fun convertToRupiah(value: Int?): CharSequence {
@@ -92,6 +97,10 @@ class DonationBoxWidget : Fragment() {
 
         binding.boxBtnDonate.setOnClickListener {
             bottomNavigationView.selectedItemId = R.id.nav_tab_donation_box
+        }
+
+        binding.donationBoxBase.setOnClickListener {
+            viewModel.setBox()
         }
 
     }

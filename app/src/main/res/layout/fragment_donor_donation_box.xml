@@ -43,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:text="@string/home_not_selected_reload" />
+                android:text="@string/home_not_selected" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/dbox_warning_btn"

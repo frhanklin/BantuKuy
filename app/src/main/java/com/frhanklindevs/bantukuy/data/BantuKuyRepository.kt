@@ -100,6 +100,14 @@ class BantuKuyRepository(application: Application) {
         return weightTotal
     }
 
+    fun getExpeditionServiceUsed(boxId: Int): Int = executorService.submit(Callable {
+        mDonorBoxDao.getExpeditionServiceUsed(boxId)
+    }).get()
+
+    fun getExpeditionCostPerKg(expeditionId: Int): Double = executorService.submit( Callable{
+        mDonorBoxDao.getExpeditionCostPerKg(expeditionId)
+    }).get()
+
     fun insertCash(cashItem: DonationCashItems) {
         executorService.execute {
             mDonorBoxDao.insertCashToBox(cashItem)
