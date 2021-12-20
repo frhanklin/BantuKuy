@@ -11,6 +11,7 @@ import com.frhanklindevs.bantukuy.R
 import com.frhanklindevs.bantukuy.databinding.FragmentDonorDonationBoxBinding
 import com.frhanklindevs.bantukuy.donor.ui.bottomnav.BottomNavListener
 import com.frhanklindevs.bantukuy.donor.ui.fragments.dashboard.widgets.box.DonationBoxWidgetViewModel
+import com.frhanklindevs.bantukuy.donor.ui.home.DonorHomeActivity
 import com.frhanklindevs.bantukuy.utils.ViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -19,6 +20,7 @@ class DonorDonationBoxFragment : Fragment() {
     private var _binding: FragmentDonorDonationBoxBinding? = null
     private val binding get() = _binding!!
 
+    private var userId: Int = 0
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var viewModel: DonorDonationBoxViewModel
 
@@ -37,6 +39,7 @@ class DonorDonationBoxFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         if (activity != null) {
+            userId = requireActivity().intent.getIntExtra(DonorHomeActivity.EXTRA_USER_ID, 0)
             setViewModel()
         }
         setViewFunctions()
@@ -51,6 +54,8 @@ class DonorDonationBoxFragment : Fragment() {
             binding.dboxAllContents.visibility = if (it) View.VISIBLE else View.GONE
         })
 
+
+        viewModel.setUserId(userId)
     }
 
     private fun setViewFunctions() {

@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/donation_box_base"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
@@ -39,7 +40,7 @@
             style="@style/Oxygen_Bold_White_18"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="@string/home_not_selected"/>
+            android:text="@string/home_not_selected_reload"/>
 
         <!--Contents-->
         <androidx.constraintlayout.widget.ConstraintLayout

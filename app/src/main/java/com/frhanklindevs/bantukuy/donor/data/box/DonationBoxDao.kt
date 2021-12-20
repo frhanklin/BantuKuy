@@ -36,6 +36,12 @@ interface DonationBoxDao {
     @Query("SELECT * FROM goods_items WHERE box_id=:boxId")
     fun getAllGoodsItems(boxId: Int): List<DonationGoodsItems>
 
+    @Query("SELECT donation_service_id FROM expedition_table WHERE box_id=:boxId")
+    fun getExpeditionServiceUsed(boxId: Int): Int
+
+    @Query("SELECT planPricePerKg FROM expedition_services WHERE id=:expeditionId")
+    fun getExpeditionCostPerKg(expeditionId: Int): Double
+
 
     //Inserting Items into Box
     @Insert

@@ -26,17 +26,6 @@ class BantuDonasiWidgetViewModel(application: Application): ViewModel() {
     private val _box = MutableLiveData<DonationBoxEntity>()
     val box : LiveData<DonationBoxEntity> = _box
 
-    init {
-        //TODO: Connect to Database, Get Selected Home Name
-        _homeId.value = "Halo"
-        _isDonateable.value = !_homeId.value.isNullOrEmpty()
-
-        if (_isDonateable.value!!) {
-            //TODO: Connect to Database, Get Current total weight of donation items
-            _currentDonationWeight.value = 12
-        }
-    }
-
     fun setUserId(userId: Int) {
         _userId.value = userId
         setBox()
