@@ -12,9 +12,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.frhanklindevs.bantukuy.databinding.FragmentDonorSearchBinding
-import com.frhanklindevs.bantukuy.donor.data.PlaceItem
+import com.frhanklindevs.bantukuy.donor.data.api.PlaceItem
 import com.frhanklindevs.bantukuy.donor.ui.detail.DetailSearchActivity
-import com.frhanklindevs.bantukuy.utils.DummyData
+import com.frhanklindevs.bantukuy.donor.ui.home.DonorHomeActivity
 import com.frhanklindevs.bantukuy.utils.ViewModelFactory
 import java.util.*
 
@@ -23,6 +23,7 @@ class DonorSearchFragment : Fragment(), DonorSearchAdapter.OnItemClickCallback {
     private var _binding : FragmentDonorSearchBinding? = null
     private val binding get() = _binding!!
 
+    private var boxId: Int = 0
     private lateinit var viewModel: DonorSearchViewModel
     private lateinit var searchAdapter: DonorSearchAdapter
 
@@ -45,6 +46,8 @@ class DonorSearchFragment : Fragment(), DonorSearchAdapter.OnItemClickCallback {
         super.onViewCreated(view, savedInstanceState)
 
         if (activity != null) {
+            boxId = requireActivity().intent.getIntExtra(DonorHomeActivity.EXTRA_BOX_ID, 0)
+
             val factory = ViewModelFactory.getInstance(requireActivity().application)
             viewModel = ViewModelProvider(this, factory)[DonorSearchViewModel::class.java]
 
@@ -134,6 +137,7 @@ class DonorSearchFragment : Fragment(), DonorSearchAdapter.OnItemClickCallback {
         Toast.makeText(requireActivity(), "You have selected data: ${home.name}", Toast.LENGTH_SHORT).show()
         val intent = Intent(requireActivity(), DetailSearchActivity::class.java)
         intent.putExtra(DetailSearchActivity.EXTRA_PLACE, home.placeId)
+        intent.putExtra(DetailSearchActivity.EXTRA_BOX_ID, boxId)
         startActivity(intent)
     }
 

@@ -70,6 +70,7 @@ class LoginActivity : AppCompatActivity() {
                 if (viewModel.verifyUser(username, password)) {
                     val intent = Intent(this, DonorHomeActivity::class.java)
                     intent.putExtra(DonorHomeActivity.EXTRA_USER_ID, viewModel.getUserId())
+                    intent.putExtra(DonorHomeActivity.EXTRA_BOX_ID, viewModel.getBoxId())
                     startActivity(intent)
                     overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
                     finish()

@@ -47,5 +47,6 @@ class DonorHomeActivity : AppCompatActivity() {
         var active : Fragment = fragment1
 
         const val EXTRA_USER_ID = "extra_user_id"
+        const val EXTRA_BOX_ID = "extra_box_id"
     }
 }

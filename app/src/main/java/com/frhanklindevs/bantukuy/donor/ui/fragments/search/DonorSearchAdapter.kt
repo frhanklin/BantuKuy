@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.frhanklindevs.bantukuy.R
 import com.frhanklindevs.bantukuy.databinding.ItemsHomeBinding
-import com.frhanklindevs.bantukuy.donor.data.PlaceItem
+import com.frhanklindevs.bantukuy.donor.data.api.PlaceItem
 import com.frhanklindevs.bantukuy.utils.BantuKuyDev
 import com.frhanklindevs.bantukuy.utils.HomeDiffCallback
 

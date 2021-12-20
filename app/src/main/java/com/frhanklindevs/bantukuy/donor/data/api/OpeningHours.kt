@@ -1,4 +1,4 @@
-package com.frhanklindevs.bantukuy.donor.data
+package com.frhanklindevs.bantukuy.donor.data.api
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

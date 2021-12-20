@@ -9,9 +9,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.frhanklindevs.bantukuy.donor.data.PhotosItem
+import com.frhanklindevs.bantukuy.donor.data.api.PhotosItem
 import com.frhanklindevs.bantukuy.databinding.ActivityDetailSearchBinding
-import com.frhanklindevs.bantukuy.donor.data.PlaceDetails
+import com.frhanklindevs.bantukuy.donor.data.api.PlaceDetails
 import com.frhanklindevs.bantukuy.utils.ViewModelFactory
 import java.lang.StringBuilder
 
@@ -20,6 +20,7 @@ class DetailSearchActivity : AppCompatActivity() {
     private var _binding : ActivityDetailSearchBinding? = null
     private val binding get() = _binding!!
 
+    private var boxId : Int = 0
     private lateinit var placeId : String
     private lateinit var photosItem : List<PhotosItem?>
 
@@ -33,6 +34,7 @@ class DetailSearchActivity : AppCompatActivity() {
 
         //Gunakan ketika sudah pakai API
         placeId = intent.extras?.getString(EXTRA_PLACE) as String
+        boxId = intent.extras?.getInt(EXTRA_BOX_ID) as Int
 
         supportActionBar?.hide()
 
@@ -85,7 +87,9 @@ class DetailSearchActivity : AppCompatActivity() {
 
         //Select Home Button
         binding.detailBtnSelect.setOnClickListener {
-
+            viewModel.savePlaceToBox(boxId)
+            Toast.makeText(this, "Menyimpan data ${viewModel.placeId.value} ke kotak $boxId", Toast.LENGTH_SHORT).show()
+            finish()
         }
 
     }
@@ -155,5 +159,6 @@ class DetailSearchActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_PLACE = "extra_place"
+        const val EXTRA_BOX_ID = "extra_box_id"
     }
 }
