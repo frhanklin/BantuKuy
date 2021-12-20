@@ -2,7 +2,7 @@ package com.frhanklindevs.bantukuy.utils
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.frhanklindevs.bantukuy.donor.data.*
+import com.frhanklindevs.bantukuy.donor.data.api.*
 
 object DummyData {
 

@@ -1,7 +1,7 @@
 package com.frhanklindevs.bantukuy.utils
 
 import androidx.recyclerview.widget.DiffUtil
-import com.frhanklindevs.bantukuy.donor.data.PlaceItem
+import com.frhanklindevs.bantukuy.donor.data.api.PlaceItem
 
 class HomeDiffCallback(private val mOldHomesList: List<PlaceItem>, private val mNewHomesList: List<PlaceItem>) : DiffUtil.Callback() {
     override fun getOldListSize(): Int = mOldHomesList.size

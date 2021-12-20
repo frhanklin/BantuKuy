@@ -1,4 +1,4 @@
-package com.frhanklindevs.bantukuy.donor.data
+package com.frhanklindevs.bantukuy.donor.data.api
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
@@ -7,16 +7,16 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class PlaceTextSearchResponse(
 
-	@field:SerializedName("next_page_token")
+    @field:SerializedName("next_page_token")
 	val nextPageToken: String? = null,
 
-	@field:SerializedName("html_attributions")
+    @field:SerializedName("html_attributions")
 	val htmlAttributions: List<String?>? = null,
 
-	@field:SerializedName("results")
+    @field:SerializedName("results")
 	val results: List<PlaceItem?>? = null,
 
-	@field:SerializedName("status")
+    @field:SerializedName("status")
 	val status: String? = null
 ) : Parcelable
 
@@ -33,20 +33,20 @@ data class Southwest(
 @Parcelize
 data class Geometry(
 
-	@field:SerializedName("viewport")
+    @field:SerializedName("viewport")
 	val viewport: Viewport? = null,
 
-	@field:SerializedName("location")
+    @field:SerializedName("location")
 	val location: Location? = null
 ) : Parcelable
 
 @Parcelize
 data class Viewport(
 
-	@field:SerializedName("southwest")
+    @field:SerializedName("southwest")
 	val southwest: Southwest? = null,
 
-	@field:SerializedName("northeast")
+    @field:SerializedName("northeast")
 	val northeast: Northeast? = null
 ) : Parcelable
 
@@ -84,51 +84,51 @@ data class Northeast(
 @Parcelize
 data class PlaceItem(
 
-	@field:SerializedName("formatted_address")
+    @field:SerializedName("formatted_address")
 	val formattedAddress: String? = null,
 
-	@field:SerializedName("types")
+    @field:SerializedName("types")
 	val types: List<String?>? = null,
 
-	@field:SerializedName("business_status")
+    @field:SerializedName("business_status")
 	val businessStatus: String? = null,
 
-	@field:SerializedName("icon")
+    @field:SerializedName("icon")
 	val icon: String? = null,
 
-	@field:SerializedName("rating")
+    @field:SerializedName("rating")
 	val rating: Double? = null,
 
-	@field:SerializedName("icon_background_color")
+    @field:SerializedName("icon_background_color")
 	val iconBackgroundColor: String? = null,
 
-	@field:SerializedName("reference")
+    @field:SerializedName("reference")
 	val reference: String? = null,
 
-	@field:SerializedName("user_ratings_total")
+    @field:SerializedName("user_ratings_total")
 	val userRatingsTotal: Int? = null,
 
-	@field:SerializedName("name")
+    @field:SerializedName("name")
 	val name: String? = null,
 
-	@field:SerializedName("geometry")
+    @field:SerializedName("geometry")
 	val geometry: Geometry? = null,
 
-	@field:SerializedName("icon_mask_base_uri")
+    @field:SerializedName("icon_mask_base_uri")
 	val iconMaskBaseUri: String? = null,
 
-	@field:SerializedName("plus_code")
+    @field:SerializedName("plus_code")
 	val plusCode: PlusCode? = null,
 
-	@field:SerializedName("place_id")
+    @field:SerializedName("place_id")
 	val placeId: String? = null,
 
-	@field:SerializedName("photos")
+    @field:SerializedName("photos")
 	val photos: List<PhotosItem?>? = null,
 
-	@field:SerializedName("opening_hours")
+    @field:SerializedName("opening_hours")
 	val openingHours: OpeningHours? = null,
 
-	@field:SerializedName("permanently_closed")
+    @field:SerializedName("permanently_closed")
 	val permanentlyClosed: Boolean? = null
 ) : Parcelable

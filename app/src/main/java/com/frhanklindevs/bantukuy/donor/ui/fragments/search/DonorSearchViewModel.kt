@@ -5,8 +5,9 @@ import androidx.core.text.isDigitsOnly
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.frhanklindevs.bantukuy.donor.data.PlaceItem
-import com.frhanklindevs.bantukuy.donor.data.PlaceTextSearchResponse
+import com.frhanklindevs.bantukuy.data.BantuKuyRepository
+import com.frhanklindevs.bantukuy.donor.data.api.PlaceItem
+import com.frhanklindevs.bantukuy.donor.data.api.PlaceTextSearchResponse
 import com.frhanklindevs.bantukuy.network.ApiConfig
 import com.frhanklindevs.bantukuy.utils.BantuKuyDev
 import retrofit2.Call

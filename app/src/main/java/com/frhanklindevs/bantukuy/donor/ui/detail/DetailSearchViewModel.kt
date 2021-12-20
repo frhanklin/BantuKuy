@@ -4,8 +4,9 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.frhanklindevs.bantukuy.donor.data.PlaceDetailResponse
-import com.frhanklindevs.bantukuy.donor.data.PlaceDetails
+import com.frhanklindevs.bantukuy.data.BantuKuyRepository
+import com.frhanklindevs.bantukuy.donor.data.api.PlaceDetailResponse
+import com.frhanklindevs.bantukuy.donor.data.api.PlaceDetails
 import com.frhanklindevs.bantukuy.network.ApiConfig
 import com.frhanklindevs.bantukuy.utils.BantuKuyDev
 import retrofit2.Call
@@ -13,6 +14,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class DetailSearchViewModel(application: Application): ViewModel() {
+
+    private val repository: BantuKuyRepository = BantuKuyRepository(application)
 
     private val _placeDetail = MutableLiveData<PlaceDetails>()
     val placeDetail : LiveData<PlaceDetails> = _placeDetail
@@ -67,6 +70,10 @@ class DetailSearchViewModel(application: Application): ViewModel() {
 
         } )
 
+    }
+
+    fun savePlaceToBox(boxId: Int) {
+        repository.updatePlaceByBoxId(boxId, _placeId.value!!)
     }
 
     private fun showContent() {

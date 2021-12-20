@@ -1,7 +1,7 @@
 package com.frhanklindevs.bantukuy.network
 
-import com.frhanklindevs.bantukuy.donor.data.PlaceDetailResponse
-import com.frhanklindevs.bantukuy.donor.data.PlaceTextSearchResponse
+import com.frhanklindevs.bantukuy.donor.data.api.PlaceDetailResponse
+import com.frhanklindevs.bantukuy.donor.data.api.PlaceTextSearchResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

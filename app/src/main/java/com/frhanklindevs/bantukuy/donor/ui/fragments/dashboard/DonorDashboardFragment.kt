@@ -42,7 +42,7 @@ class DonorDashboardFragment : Fragment() {
     private fun setViewModel() {
         val factory = ViewModelFactory.getInstance(requireActivity().application)
         viewModel = ViewModelProvider(this, factory)[DonorDashboardViewModel::class.java]
-        
+
         viewModel.setUserId(userId)
         viewModel.username.observe(viewLifecycleOwner, { username ->
             binding.donorDashTvGreetingsTitle.text = getString(R.string.donor_user_greetings, username)

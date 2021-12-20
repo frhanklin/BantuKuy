@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.frhanklindevs.bantukuy.donor.data.PlaceDetails
+import com.frhanklindevs.bantukuy.donor.data.api.PlaceDetails
 
 class DonationBoxItemHomeViewModel(application: Application): ViewModel() {
 

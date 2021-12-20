@@ -5,10 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.ViewModelProvider
 import com.frhanklindevs.bantukuy.R
 import com.frhanklindevs.bantukuy.databinding.FragmentBantuDonasiWidgetBinding
 import com.frhanklindevs.bantukuy.donor.ui.bottomnav.BottomNavListener
+import com.frhanklindevs.bantukuy.donor.ui.home.DonorHomeActivity
 import com.frhanklindevs.bantukuy.utils.ViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -17,6 +19,7 @@ class BantuDonasiWidget : Fragment() {
     private var _binding : FragmentBantuDonasiWidgetBinding? = null
     private val binding get() = _binding!!
 
+    private var userId: Int = 0
     private lateinit var viewModel: BantuDonasiWidgetViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View {
@@ -34,6 +37,7 @@ class BantuDonasiWidget : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         if (activity != null) {
+            userId = requireActivity().intent.getIntExtra(DonorHomeActivity.EXTRA_USER_ID, 0)
             setViewModel()
             setViewBehaviors()
         }
@@ -51,11 +55,17 @@ class BantuDonasiWidget : Fragment() {
         viewModel.currentDonationWeight.observe(viewLifecycleOwner, {
             binding.bantuDonasiOverviewNumber.text = it.toString()
         })
+
+        viewModel.setUserId(userId)
     }
 
     private fun setViewBehaviors() {
         val bottomNavigationView = activity?.findViewById(R.id.bottom_nav_main) as BottomNavigationView
         bottomNavigationView.setOnItemSelectedListener(BottomNavListener.getBottomNavigationListenerFragment(this))
+
+        binding.bantuDonasiBase.setOnClickListener {
+            viewModel.setUserId(userId)
+        }
 
         binding.bantuDonasiEdit.setOnClickListener {
             bottomNavigationView.selectedItemId = R.id.nav_tab_donation_box

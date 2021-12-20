@@ -58,4 +58,6 @@ class LoginViewModel(application: Application): ViewModel() {
 
     fun getUserId() = _userId.value
 
+    fun getBoxId() = _userId.value?.let { repository.getUserActiveBox(it).boxId }
+
 }
