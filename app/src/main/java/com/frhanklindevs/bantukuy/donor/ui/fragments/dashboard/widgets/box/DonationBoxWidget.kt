@@ -134,6 +134,9 @@ class DonationBoxWidget : Fragment() {
         binding.donationBoxBase.setOnClickListener {
             viewModel.setBox()
         }
+        binding.btnReload.setOnClickListener {
+            viewModel.setBox()
+        }
 
     }
 

@@ -20,6 +20,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
+    <ImageButton
+        android:id="@+id/btn_reload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_refresh_black"
+        app:layout_constraintTop_toTopOf="@id/donation_box_tv_title"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
 
     <LinearLayout
         android:id="@+id/donation_box_container"
@@ -29,7 +38,7 @@
         android:background="@drawable/rounded_background_secondary_2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/donation_box_tv_title">
+        app:layout_constraintTop_toBottomOf="@id/btn_reload">
 
         <!--Warning Text-->
         <TextView

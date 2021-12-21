@@ -43,6 +43,25 @@ interface DonationBoxDao {
     fun getExpeditionCostPerKg(expeditionId: Int): Double
 
 
+    //Checking if items is exist in Box
+    @Query("SELECT EXISTS (SELECT * FROM cash_items WHERE (box_id=:boxId AND cash_name=:categoryName))")
+    fun checkCashItem(boxId: Int, categoryName: String): Boolean
+    @Query("SELECT EXISTS (SELECT * FROM goods_items WHERE (box_id=:boxId AND goods_name=:goodsName))")
+    fun checkGoodsItem(boxId: Int, goodsName: String): Boolean
+
+    //Getting item ID from DB
+    @Query("SELECT id FROM cash_items WHERE (box_id=:boxId AND cash_name=:categoryName)")
+    fun getCashItemId(boxId: Int, categoryName: String): Int
+    @Query("SELECT id FROM goods_items WHERE (box_id=:boxId AND goods_name=:goodsName)")
+    fun getGoodsItemId(boxId: Int, goodsName: String): Int
+
+    //Fetching item if exists
+    @Query("SELECT * FROM cash_items WHERE id=:id")
+    fun getCashById(id: Int): DonationCashItems
+    @Query("SELECT * FROM goods_items WHERE id=:id")
+    fun getGoodsById(id: Int): DonationGoodsItems
+
+
     //Inserting Items into Box
     @Insert
     fun insertCashToBox(cashItem: DonationCashItems)

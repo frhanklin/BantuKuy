@@ -20,16 +20,16 @@
 
     <TextView
         android:id="@+id/popup_text"
+        style="@style/Oxygen_Bold_White_18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/Oxygen_Bold_White_18"
-        android:text="@string/add_cash"
-        android:maxLines="3"
-        android:textAlignment="center"
+        android:layout_below="@id/popup_img"
         android:layout_centerHorizontal="true"
         android:layout_marginHorizontal="8dp"
         android:layout_marginTop="10dp"
-        android:layout_below="@id/popup_img"/>
+        android:maxLines="3"
+        android:text="@string/add_cash"
+        android:textAlignment="center" />
 
     <Spinner
         android:id="@+id/popup_cash_spinner"

@@ -46,6 +46,9 @@ class DonorMoneyAdapter: RecyclerView.Adapter<DonorMoneyAdapter.MoneyViewHolder>
         with(holder) {
             binding.dboxBoxMoneyName.text = item.cashName
             binding.dboxBoxMoneyValue.text = convertToRupiah(item.cashValue.toInt())
+            binding.dboxBoxMoneyBtnEdit.setOnClickListener {
+                onItemClickCallback.onEditCashValueBtnClicked(item)
+            }
         }
     }
 

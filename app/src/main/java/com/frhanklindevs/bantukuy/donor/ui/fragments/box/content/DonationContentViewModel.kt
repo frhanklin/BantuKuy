@@ -54,14 +54,13 @@ class DonationContentViewModel(application: Application): ViewModel() {
         _listGoods.value = _boxId.value?.let { repository.getAllGoodsItems(it) }
     }
 
-    fun insertCash(categoryName: String, value: Double) {
-        repository.insertCash(
-            DonationCashItems(
-            boxId = _boxId.value!!,
-            cashName = categoryName,
-            cashValue = value
-        )
-        )
+    fun insertOrUpdateCash(categoryName: String, value: Double) {
+        repository.insertOrUpdateCash(_boxId.value!!, categoryName, value)
+        setBox()
+    }
+
+    fun updateCash(newCash: DonationCashItems) {
+        repository.updateCash(newCash)
         setBox()
     }
 

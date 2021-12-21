@@ -21,13 +21,22 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
+    <ImageButton
+        android:id="@+id/btn_reload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_refresh_black"
+        app:layout_constraintTop_toTopOf="@id/bantu_donasi_tv_title"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <!--Main Contents and Warning Text-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="130dp"
         android:background="@drawable/rounded_background_secondary_2"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/bantu_donasi_tv_title"
+        app:layout_constraintTop_toBottomOf="@id/btn_reload"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
@@ -67,8 +76,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:textSize="60sp"
-                    android:fontFamily="@font/oxygen_bold_family"
-                    android:text="999"/>
+                    android:fontFamily="@font/oxygen_bold_family"/>
 
                 <TextView
                     android:id="@+id/bantu_donasi_overview_placeholder_2"

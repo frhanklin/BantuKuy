@@ -30,7 +30,7 @@
             android:visibility="visible"
             android:id="@+id/dbox_warning_container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -55,6 +55,16 @@
                 android:text="@string/pilih_panti"
                 style="@style/Oxygen_Bold_White_14"
                 android:textAllCaps="false"/>
+
+            <TextView
+                android:id="@+id/reload_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                style="@style/Oxygen_Bold_Black_12"
+                android:text="Sudah memilih?\nTekan untuk memuat ulang"
+                android:layout_gravity="center"
+                android:textAlignment="center"/>
 
         </LinearLayout>
 

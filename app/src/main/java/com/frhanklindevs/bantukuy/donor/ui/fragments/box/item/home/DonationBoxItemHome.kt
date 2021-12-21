@@ -39,6 +39,13 @@ class DonationBoxItemHome : Fragment() {
         if (activity != null) {
             userId = requireActivity().intent.getIntExtra(DonorHomeActivity.EXTRA_USER_ID, 0)
             setViewModel()
+            setViewBehavior()
+        }
+    }
+
+    private fun setViewBehavior() {
+        binding.btnReload.setOnClickListener {
+            viewModel.setBox()
         }
     }
 
