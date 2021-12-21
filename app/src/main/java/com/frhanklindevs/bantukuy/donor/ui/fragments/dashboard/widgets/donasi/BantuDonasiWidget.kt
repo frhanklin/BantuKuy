@@ -5,11 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import com.frhanklindevs.bantukuy.R
 import com.frhanklindevs.bantukuy.databinding.FragmentBantuDonasiWidgetBinding
 import com.frhanklindevs.bantukuy.donor.ui.bottomnav.BottomNavListener
+import com.frhanklindevs.bantukuy.donor.data.model.SharedDonorViewModel
 import com.frhanklindevs.bantukuy.donor.ui.home.DonorHomeActivity
 import com.frhanklindevs.bantukuy.utils.ViewModelFactory
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -21,6 +22,7 @@ class BantuDonasiWidget : Fragment() {
 
     private var userId: Int = 0
     private lateinit var viewModel: BantuDonasiWidgetViewModel
+    private val sharedViewModel: SharedDonorViewModel by activityViewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View {
         // Inflate the layout for this fragment

@@ -6,6 +6,7 @@
     android:id="@+id/dbox_goods_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginVertical="2dp"
     android:background="@color/white"
     tools:context=".donor.ui.fragments.box.item.DonationBoxItemGoods">
 

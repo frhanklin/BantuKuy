@@ -133,8 +133,6 @@ class DonorSearchFragment : Fragment(), DonorSearchAdapter.OnItemClickCallback {
 
 
     override fun onItemClicked(home: PlaceItem) {
-        //TODO Intent to show Place's Details
-        Toast.makeText(requireActivity(), "You have selected data: ${home.name}", Toast.LENGTH_SHORT).show()
         val intent = Intent(requireActivity(), DetailSearchActivity::class.java)
         intent.putExtra(DetailSearchActivity.EXTRA_PLACE, home.placeId)
         intent.putExtra(DetailSearchActivity.EXTRA_BOX_ID, boxId)

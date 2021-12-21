@@ -6,9 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import com.frhanklindevs.bantukuy.R
 import com.frhanklindevs.bantukuy.databinding.FragmentDonationBoxWidgetBinding
+import com.frhanklindevs.bantukuy.donor.data.model.SharedDonorViewModel
 import com.frhanklindevs.bantukuy.donor.ui.bottomnav.BottomNavListener
 import com.frhanklindevs.bantukuy.donor.ui.home.DonorHomeActivity
 import com.frhanklindevs.bantukuy.utils.ViewModelFactory
@@ -22,6 +24,7 @@ class DonationBoxWidget : Fragment() {
 
     private var userId: Int = 0
     private lateinit var viewModel: DonationBoxWidgetViewModel
+    private val sharedViewModel: SharedDonorViewModel by activityViewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View {
         // Inflate the layout for this fragment
@@ -39,7 +42,36 @@ class DonationBoxWidget : Fragment() {
 
         userId = requireActivity().intent.getIntExtra(DonorHomeActivity.EXTRA_USER_ID, 0)
         setViewModel()
+//        setSharedViewModel()
         setViewBehaviors()
+    }
+
+    private fun setSharedViewModel() {
+        sharedViewModel.isDonateable.observe(viewLifecycleOwner, {
+            binding.donationBoxWarning.visibility = if (it) View.GONE else View.VISIBLE
+            binding.donationBoxContents.visibility = if (it) View.VISIBLE else View.GONE
+        })
+
+        sharedViewModel.homeDetails.observe(viewLifecycleOwner, {
+            if (!sharedViewModel.homeDetails.value?.name.isNullOrEmpty()) {
+                binding.boxContentHouseTargetText.text = sharedViewModel.homeDetails.value?.name
+            }
+        })
+
+        sharedViewModel.currentTotalDonationMoney.observe(viewLifecycleOwner, {
+            binding.boxDonationDetailCashText.text = convertToRupiah(it)
+        })
+        sharedViewModel.currentDonationWeight.observe(viewLifecycleOwner, {
+            binding.boxDonationDetailGoodsText.text = String.format(getString(R.string.format_kilogram), it.toString())
+        })
+        sharedViewModel.currentTotalExpeditionFee.observe(viewLifecycleOwner, {
+            binding.boxDonationDetailExpeditionText.text = convertToRupiah(it)
+        })
+        sharedViewModel.currentTotalCost.observe(viewLifecycleOwner, {
+            binding.boxDonationTotalPaymentText.text = convertToRupiah(it)
+        })
+
+        sharedViewModel.setUserId(userId)
     }
 
     private fun setViewModel() {
