@@ -68,4 +68,10 @@
     <string name="placeholder_money">placeholder_money</string>
     <string name="placeholder_kilogram">placeholder_kilogram</string>
     <string name="format_rupiah">Rp %s</string>
+    <string name="add_cash">Tambah Nominal</string>
+
+    <string-array name="cash_categories">
+        <item>Tunai</item>
+        <item>Cek</item>
+    </string-array>
 </resources>
