@@ -10,6 +10,7 @@ import com.frhanklindevs.bantukuy.R
 import com.frhanklindevs.bantukuy.databinding.FragmentDonationBoxItemGoodsBinding
 import com.frhanklindevs.bantukuy.donor.data.box.DonationGoodsItems
 import com.frhanklindevs.bantukuy.utils.GoodsDiffCallback
+import com.google.android.material.progressindicator.BaseProgressIndicator
 import java.util.*
 import kotlin.collections.ArrayList
 

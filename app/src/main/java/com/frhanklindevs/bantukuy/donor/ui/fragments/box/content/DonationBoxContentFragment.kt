@@ -8,8 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,7 +21,6 @@ import com.frhanklindevs.bantukuy.donor.ui.home.DonorHomeActivity
 import com.frhanklindevs.bantukuy.utils.PopUpCreator
 import com.frhanklindevs.bantukuy.utils.ViewModelFactory
 import com.google.android.material.textfield.TextInputEditText
-import kotlinx.android.synthetic.main.popup_add_cash.*
 
 class DonationBoxContentFragment : Fragment(), DonorMoneyAdapter.OnItemClickCallback, DonorGoodsAdapter.OnItemClickCallback {
 
@@ -30,9 +29,12 @@ class DonationBoxContentFragment : Fragment(), DonorMoneyAdapter.OnItemClickCall
 
     private var userId: Int = 0
     private lateinit var popupAddCash: Dialog
+    private lateinit var popUpText: TextView
     private lateinit var cashSpinner: Spinner
+    private lateinit var arrayAdapter: ArrayAdapter<CharSequence>
     private lateinit var editCashValue: TextInputEditText
     private lateinit var popUpAddCashBtnConfirm: AppCompatImageButton
+    private lateinit var editCashTemp: DonationCashItems
 
     private lateinit var viewModel: DonationContentViewModel
     private lateinit var moneyAdapter: DonorMoneyAdapter
@@ -63,8 +65,9 @@ class DonationBoxContentFragment : Fragment(), DonorMoneyAdapter.OnItemClickCall
 
     private fun setView() {
         popupAddCash = PopUpCreator.createSmallAddCashPopUpDialog(requireActivity())
+        popUpText = popupAddCash.findViewById(R.id.popup_text)
         cashSpinner = popupAddCash.findViewById(R.id.popup_cash_spinner)
-        ArrayAdapter.createFromResource(requireContext(), R.array.cash_categories, android.R.layout.simple_spinner_item).also {
+        arrayAdapter = ArrayAdapter.createFromResource(requireContext(), R.array.cash_categories, android.R.layout.simple_spinner_item).also {
             it.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             cashSpinner.adapter = it
         }
@@ -77,23 +80,64 @@ class DonationBoxContentFragment : Fragment(), DonorMoneyAdapter.OnItemClickCall
             viewModel.setBox()
         }
         binding.btnAddMoney.setOnClickListener {
+            editCashValue.setText("")
+            popUpAddCashBtnConfirm.setOnClickListener(addCashAction)
+            popUpAddCashBtnConfirm.setImageDrawable(resources.getDrawable(R.drawable.ic_add_circle_outline_70_white))
+            cashSpinner.isEnabled = true
+            popUpText.text = getString(R.string.add_cash)
             popupAddCash.show()
         }
-        popUpAddCashBtnConfirm.setOnClickListener {
-            if (cashSpinner.selectedItem.toString().isNullOrEmpty()) {
-                Toast.makeText(requireContext(), "Mohon pilih kategori yang tersedia", Toast.LENGTH_SHORT).show()
+    }
+
+    private val addCashAction: View.OnClickListener = View.OnClickListener {
+        if (cashSpinner.selectedItem.toString().isEmpty()) {
+            Toast.makeText(requireContext(), "Mohon pilih kategori yang tersedia", Toast.LENGTH_SHORT).show()
+        } else {
+            if (editCashValue.text.toString().isEmpty()) {
+                Toast.makeText(requireContext(), "Mohon masukan nominal donasi", Toast.LENGTH_SHORT).show()
             } else {
-                if (editCashValue.text.toString().isNullOrEmpty()) {
-                    Toast.makeText(requireContext(), "Mohon masukan nominal donasi", Toast.LENGTH_SHORT).show()
+                val value = editCashValue.text.toString().toDouble()
+                if (value <= 0) {
+                    Toast.makeText(requireContext(), "Mohon masukan nominal yang valid", Toast.LENGTH_SHORT).show()
                 } else {
                     val category = cashSpinner.selectedItem.toString()
-                    val value = editCashValue.text.toString().toDouble()
 
-                    viewModel.insertCash(category, value)
+                    viewModel.insertOrUpdateCash(category, value)
+                    editCashValue.setText("")
+                    popupAddCash.dismiss()
                 }
             }
         }
     }
+
+    private val editCashAction: View.OnClickListener = View.OnClickListener {
+        if (cashSpinner.selectedItem.toString().isEmpty()) {
+            Toast.makeText(requireContext(), "Mohon pilih kategori yang tersedia", Toast.LENGTH_SHORT).show()
+        } else {
+            if (editCashValue.text.toString().isEmpty()) {
+                Toast.makeText(requireContext(), "Mohon masukan nominal donasi", Toast.LENGTH_SHORT).show()
+            } else {
+                val value = editCashValue.text.toString().toDouble()
+                if (value <= 0) {
+                    Toast.makeText(requireContext(), "Mohon masukan nominal yang valid", Toast.LENGTH_SHORT).show()
+                } else {
+                    val category = cashSpinner.selectedItem.toString()
+
+                    val updatedCash = DonationCashItems(
+                        editCashTemp.boxId,
+                        editCashTemp.id,
+                        category,
+                        value
+                    )
+
+                    viewModel.updateCash(updatedCash)
+                    editCashValue.setText("")
+                    popupAddCash.dismiss()
+                }
+            }
+        }
+    }
+
 
     private fun setViewModel() {
         val factory = ViewModelFactory.getInstance(requireActivity().application)
@@ -124,7 +168,18 @@ class DonationBoxContentFragment : Fragment(), DonorMoneyAdapter.OnItemClickCall
     }
 
     override fun onEditCashValueBtnClicked(cashItem: DonationCashItems) {
-        //TODO: Implement Edit Cash Value Pop Up
+        editCashTemp = cashItem
+
+        popUpAddCashBtnConfirm.setImageDrawable(resources.getDrawable(R.drawable.ic_pen))
+        popUpAddCashBtnConfirm.setOnClickListener(editCashAction)
+        popUpText.text = getString(R.string.edit_cash)
+
+        val spinnerPosttion = arrayAdapter.getPosition(cashItem.cashName)
+        cashSpinner.setSelection(spinnerPosttion)
+        cashSpinner.isEnabled = false
+        editCashValue.setText("${cashItem.cashValue}")
+
+        popupAddCash.show()
     }
 
     override fun onEditGoodsBtnClicked(goodsItem: DonationGoodsItems) {

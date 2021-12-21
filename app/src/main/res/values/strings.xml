@@ -46,7 +46,7 @@
     <string name="donor_overview">Ringkasan Donasi</string>
     <string name="rupiah">Rp</string>
     <string name="kilogram">kg</string>
-    <string name="select_payment">Pilih Pembawyaran</string>
+    <string name="select_payment">Pilih Pembayaran</string>
     <string name="home_not_selected">Kamu belum memilih panti</string>
     <string name="home_not_selected_reload">Kamu belum memilih panti\nTekan untuk memuat ulang</string>
     <string name="home_name">Nama Panti Asuhan</string>
@@ -69,6 +69,7 @@
     <string name="placeholder_kilogram">placeholder_kilogram</string>
     <string name="format_rupiah">Rp %s</string>
     <string name="add_cash">Tambah Nominal</string>
+    <string name="edit_cash">Ganti Nominal</string>
 
     <string-array name="cash_categories">
         <item>Tunai</item>

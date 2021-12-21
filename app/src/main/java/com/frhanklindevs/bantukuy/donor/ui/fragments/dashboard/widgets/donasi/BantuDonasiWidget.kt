@@ -72,6 +72,9 @@ class BantuDonasiWidget : Fragment() {
         binding.bantuDonasiEdit.setOnClickListener {
             bottomNavigationView.selectedItemId = R.id.nav_tab_donation_box
         }
+        binding.btnReload.setOnClickListener {
+            viewModel.setUserId(userId)
+        }
 
         binding.bantuDonasiAdd.setOnClickListener {
             // TODO : Show Popup (Lists: Donation item categories, TextField (weight), Add Button)

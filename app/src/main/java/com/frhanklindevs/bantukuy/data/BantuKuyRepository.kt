@@ -108,6 +108,42 @@ class BantuKuyRepository(application: Application) {
         mDonorBoxDao.getExpeditionCostPerKg(expeditionId)
     }).get()
 
+    fun insertOrUpdateCash(boxId: Int, categoryName: String, newValue: Double) {
+        executorService.execute {
+            val cashExists = mDonorBoxDao.checkCashItem(boxId, categoryName)
+            if (cashExists) {
+                //Update existing data
+                val itemId = mDonorBoxDao.getCashItemId(boxId, categoryName)
+                val item = mDonorBoxDao.getCashById(itemId)
+                val currentValue = item.cashValue + newValue
+
+                val updatedItem = DonationCashItems(
+                    boxId = boxId,
+                    id = itemId,
+                    cashName = categoryName,
+                    cashValue = currentValue
+                )
+                mDonorBoxDao.updateCash(updatedItem)
+            } else {
+                //Insert new data
+                val newItem = DonationCashItems(
+                    boxId = boxId,
+                    cashName = categoryName,
+                    cashValue = newValue
+                )
+                mDonorBoxDao.insertCashToBox(newItem)
+            }
+        }
+    }
+
+    fun checkCash(boxId: Int, categoryName: String): Boolean = executorService.submit(Callable {
+        mDonorBoxDao.checkCashItem(boxId, categoryName)
+    }).get()
+
+    fun getCashById(id: Int): DonationCashItems = executorService.submit(Callable {
+        mDonorBoxDao.getCashById(id)
+    }).get()
+
     fun insertCash(cashItem: DonationCashItems) {
         executorService.execute {
             mDonorBoxDao.insertCashToBox(cashItem)

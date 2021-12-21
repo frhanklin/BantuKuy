@@ -39,7 +39,7 @@ class DonationBoxItemHomeViewModel(application: Application): ViewModel() {
         setBox()
     }
 
-    private fun setBox() {
+    fun setBox() {
         val handler = Handler(Looper.getMainLooper())
         handler.post {
             _box.value = _userId.value?.let { repository.getUserActiveBox(it) }
