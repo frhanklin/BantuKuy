@@ -42,4 +42,9 @@ class BantuDonasiWidgetViewModel(application: Application): ViewModel() {
         }
     }
 
+    fun insertOrUpdateGoods(categoryName: String, value: Int) {
+        repository.insertOrUpdateGoods(_box.value!!.boxId, categoryName, value)
+        setBox()
+    }
+
 }

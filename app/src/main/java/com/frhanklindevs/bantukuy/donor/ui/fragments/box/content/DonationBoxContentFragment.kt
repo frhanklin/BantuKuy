@@ -19,6 +19,7 @@ import com.frhanklindevs.bantukuy.donor.ui.home.DonorHomeActivity
 import com.frhanklindevs.bantukuy.utils.PopUpCreator
 import com.frhanklindevs.bantukuy.utils.ViewModelFactory
 import com.google.android.material.textfield.TextInputEditText
+import okhttp3.internal.format
 import kotlin.math.roundToInt
 
 class DonationBoxContentFragment : Fragment(), DonorMoneyAdapter.OnItemClickCallback, DonorGoodsAdapter.OnItemClickCallback {
@@ -28,13 +29,22 @@ class DonationBoxContentFragment : Fragment(), DonorMoneyAdapter.OnItemClickCall
 
     private var userId: Int = 0
     private lateinit var popUpAddEdit: Dialog
+    private lateinit var popUpDelete: Dialog
+
     private lateinit var popUpImg: ImageView
+
     private lateinit var popUpText: TextView
+    private lateinit var popUpDelText: TextView
+
     private lateinit var popUpSpinner: Spinner
     private lateinit var cashArrayAdapter: ArrayAdapter<CharSequence>
     private lateinit var goodsArrayAdapter: ArrayAdapter<CharSequence>
     private lateinit var popUpEditValue: TextInputEditText
+
     private lateinit var popUpAddEditBtnConfirm: AppCompatImageButton
+    private lateinit var popUpDeleteBtnConfirm: AppCompatImageButton
+    private lateinit var popUpDeleteBtnCancel: AppCompatImageButton
+
     private lateinit var editCashTemp: DonationCashItems
     private lateinit var editGoodsTemp: DonationGoodsItems
 
@@ -67,8 +77,13 @@ class DonationBoxContentFragment : Fragment(), DonorMoneyAdapter.OnItemClickCall
 
     private fun setView() {
         popUpAddEdit = PopUpCreator.createSmallAddPopUpDialog(requireActivity())
+        popUpDelete = PopUpCreator.createSmallDelPopUpDialog(requireActivity())
+
         popUpImg = popUpAddEdit.findViewById(R.id.popup_img)
+
         popUpText = popUpAddEdit.findViewById(R.id.popup_text)
+        popUpDelText = popUpDelete.findViewById(R.id.popup_del_detail_text)
+
         popUpSpinner = popUpAddEdit.findViewById(R.id.popup_spinner)
         cashArrayAdapter =
             ArrayAdapter.createFromResource(
@@ -86,7 +101,10 @@ class DonationBoxContentFragment : Fragment(), DonorMoneyAdapter.OnItemClickCall
                 popUpSpinner.adapter = it
             }
         popUpEditValue = popUpAddEdit.findViewById(R.id.ed_cash_value)
-        popUpAddEditBtnConfirm = popUpAddEdit.findViewById(R.id.btn_add_money_confirm)
+
+        popUpAddEditBtnConfirm = popUpAddEdit.findViewById(R.id.btn_add_confirm)
+        popUpDeleteBtnConfirm = popUpDelete.findViewById(R.id.btn_del_confirm)
+        popUpDeleteBtnCancel = popUpDelete.findViewById(R.id.btn_del_cancel)
     }
 
     private fun setViewBehaviors() {
@@ -127,6 +145,14 @@ class DonationBoxContentFragment : Fragment(), DonorMoneyAdapter.OnItemClickCall
 
             popUpSpinner.isEnabled = true
             popUpAddEdit.show()
+        }
+        popUpDeleteBtnConfirm.setOnClickListener {
+            viewModel.deleteGoods(editGoodsTemp)
+            popUpDelete.dismiss()
+        }
+        popUpDeleteBtnCancel.setOnClickListener {
+            popUpDelText.text = ""
+            popUpDelete.dismiss()
         }
     }
 
@@ -308,6 +334,11 @@ class DonationBoxContentFragment : Fragment(), DonorMoneyAdapter.OnItemClickCall
 
     override fun onDeleteGoodsBtnClicked(goodsItem: DonationGoodsItems) {
         //TODO: Implement Delete Button Behavior for Goods Item
+        editGoodsTemp = goodsItem
+        val textPlaceholder = getString(R.string.popup_del_goods_placeholder)
+
+        popUpDelText.text = format(textPlaceholder, goodsItem.goodsName, goodsItem.goodsWeight)
+        popUpDelete.show()
     }
 
 

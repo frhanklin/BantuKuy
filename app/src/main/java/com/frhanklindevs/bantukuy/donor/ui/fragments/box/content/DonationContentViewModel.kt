@@ -74,6 +74,11 @@ class DonationContentViewModel(application: Application): ViewModel() {
         setBox()
     }
 
+    fun deleteGoods(goodsItem: DonationGoodsItems) {
+        repository.deleteGoods(goodsItem)
+        setBox()
+    }
+
     companion object {
         private const val API_KEY = BantuKuyDev.API_KEY
     }

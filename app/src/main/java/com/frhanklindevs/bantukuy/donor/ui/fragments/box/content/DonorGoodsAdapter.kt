@@ -51,6 +51,9 @@ class DonorGoodsAdapter: RecyclerView.Adapter<DonorGoodsAdapter.GoodsViewHolder>
             binding.dboxGoodsBtnEdit.setOnClickListener {
                 onItemClickCallback.onEditGoodsBtnClicked(item)
             }
+            binding.dboxGoodsBtnDel.setOnClickListener {
+                onItemClickCallback.onDeleteGoodsBtnClicked(item)
+            }
         }
     }
 
