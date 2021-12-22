@@ -73,6 +73,8 @@
     <string name="add_goods">Tambah Bobot Barang</string>
     <string name="edit_goods">Ganti Bobot Barang</string>
     <string name="cash_hint">Nominal</string>
+    <string name="delete_confirmation">Yakin hapus?</string>
+    <string name="popup_del_goods_placeholder">%s\n(%d kg)</string>
 
     <string-array name="spinner_cash_categories">
         <item>Tunai</item>
