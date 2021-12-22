@@ -70,9 +70,18 @@
     <string name="format_rupiah">Rp %s</string>
     <string name="add_cash">Tambah Nominal</string>
     <string name="edit_cash">Ganti Nominal</string>
+    <string name="add_goods">Tambah Bobot Barang</string>
+    <string name="edit_goods">Ganti Bobot Barang</string>
+    <string name="cash_hint">Nominal</string>
 
-    <string-array name="cash_categories">
+    <string-array name="spinner_cash_categories">
         <item>Tunai</item>
         <item>Cek</item>
+    </string-array>
+
+    <string-array name="spinner_goods_categories">
+        <item>Bahan Makanan</item>
+        <item>Pakaian</item>
+        <item>Alat Tulis Kantor</item>
     </string-array>
 </resources>
