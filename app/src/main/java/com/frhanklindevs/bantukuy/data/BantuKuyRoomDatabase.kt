@@ -4,9 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.frhanklindevs.bantukuy.data.user.UserDao
 import com.frhanklindevs.bantukuy.data.user.UserEntity
 import com.frhanklindevs.bantukuy.donor.data.box.*
+import java.util.concurrent.Executors
 
 @Database(
     entities = [
@@ -36,10 +38,37 @@ abstract class BantuKuyRoomDatabase : RoomDatabase(){
                     INSTANCE = Room.databaseBuilder(context.applicationContext,
                         BantuKuyRoomDatabase::class.java,
                         "bantu_kuy_db"
-                    ).build()
+                    ).addCallback(object : Callback() {
+                        override fun onCreate(db: SupportSQLiteDatabase) {
+                            super.onCreate(db)
+                            INSTANCE?.let { taskDatabase ->
+                                Executors.newSingleThreadScheduledExecutor().execute {
+                                    fillWithStartingData(taskDatabase.donorBoxDao(), taskDatabase.userDao())
+                                }
+                            }
+                        }
+                    }).build()
                 }
             }
             return INSTANCE as BantuKuyRoomDatabase
+        }
+
+        private fun fillWithStartingData(donorBoxDao: DonationBoxDao, userDao: UserDao) {
+            donorBoxDao.insertStartingExpeditionData(
+                ExpeditionServices(
+                    expeditionCompany = "JNE",
+                    planName = "Reguler",
+                    planPricePerKg = 28000.0
+                )
+            )
+            userDao.insert(
+                UserEntity(
+                    fullName = "AK",
+                    email = "landarlan60@gmail.com",
+                    userName = "admin",
+                    password = "11111111"
+                )
+            )
         }
 
     }

@@ -107,7 +107,7 @@ class SharedDonorViewModel(application: Application): ViewModel() {
                 if (_currentDonationWeight.value != null) {
                     val expeditionUsed = repository.getExpeditionServiceUsed(this)
 
-                    _currentTotalExpeditionFee.value = repository.getExpeditionCostPerKg(expeditionUsed).toInt() * _currentDonationWeight.value!!
+                    _currentTotalExpeditionFee.value = repository.getExpeditionServiceDetail(expeditionUsed).planPricePerKg.toInt() * _currentDonationWeight.value!!
 
                     if (_currentTotalExpeditionFee.value != null && _currentTotalDonationMoney.value != null) {
                         _currentTotalCost.value = _currentTotalDonationMoney.value!! + _currentTotalExpeditionFee.value!!

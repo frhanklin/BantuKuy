@@ -46,33 +46,6 @@ class DonationBoxWidget : Fragment() {
         setViewBehaviors()
     }
 
-    private fun setSharedViewModel() {
-        sharedViewModel.isDonateable.observe(viewLifecycleOwner, {
-            binding.donationBoxWarning.visibility = if (it) View.GONE else View.VISIBLE
-            binding.donationBoxContents.visibility = if (it) View.VISIBLE else View.GONE
-        })
-
-        sharedViewModel.homeDetails.observe(viewLifecycleOwner, {
-            if (!sharedViewModel.homeDetails.value?.name.isNullOrEmpty()) {
-                binding.boxContentHouseTargetText.text = sharedViewModel.homeDetails.value?.name
-            }
-        })
-
-        sharedViewModel.currentTotalDonationMoney.observe(viewLifecycleOwner, {
-            binding.boxDonationDetailCashText.text = convertToRupiah(it)
-        })
-        sharedViewModel.currentDonationWeight.observe(viewLifecycleOwner, {
-            binding.boxDonationDetailGoodsText.text = String.format(getString(R.string.format_kilogram), it.toString())
-        })
-        sharedViewModel.currentTotalExpeditionFee.observe(viewLifecycleOwner, {
-            binding.boxDonationDetailExpeditionText.text = convertToRupiah(it)
-        })
-        sharedViewModel.currentTotalCost.observe(viewLifecycleOwner, {
-            binding.boxDonationTotalPaymentText.text = convertToRupiah(it)
-        })
-
-        sharedViewModel.setUserId(userId)
-    }
 
     private fun setViewModel() {
         val factory = ViewModelFactory.getInstance(requireActivity().application)

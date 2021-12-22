@@ -79,9 +79,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clipToPadding="false"
+                android:scrollbars="vertical"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                tools:listitem="@layout/fragment_donation_box_item_money"
-                tools:itemCount="3"/>
+                tools:listitem="@layout/fragment_donation_box_item_money"/>
             <!--Add to Database Btn-->
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_add_money"
@@ -140,7 +140,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:name="com.frhanklindevs.bantukuy.donor.ui.fragments.box.item.DonationBoxItemExpedition"/>
+                android:name="com.frhanklindevs.bantukuy.donor.ui.fragments.box.item.expedition.DonationBoxItemExpedition"/>
 
 
 
