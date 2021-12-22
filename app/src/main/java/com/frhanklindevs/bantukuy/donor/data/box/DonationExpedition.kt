@@ -19,7 +19,7 @@ data class DonationExpeditionItem (
 
     @NonNull
     @ColumnInfo(name = "donation_service_id")
-    var donationServiceId: Int = 0
+    var donationServiceId: Int = 1
 
 ): Parcelable
 

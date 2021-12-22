@@ -269,6 +269,7 @@ class DonationBoxContentFragment : Fragment(), DonorMoneyAdapter.OnItemClickCall
                 binding.rvMoney.layoutManager = LinearLayoutManager(requireContext())
                 binding.rvMoney.adapter = moneyAdapter
                 binding.rvMoney.setHasFixedSize(true)
+                binding.rvMoney.isNestedScrollingEnabled = true
             }
         })
         viewModel.listGoods.observe(viewLifecycleOwner, {

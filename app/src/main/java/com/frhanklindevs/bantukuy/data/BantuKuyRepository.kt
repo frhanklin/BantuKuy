@@ -104,8 +104,8 @@ class BantuKuyRepository(application: Application) {
         mDonorBoxDao.getExpeditionServiceUsed(boxId)
     }).get()
 
-    fun getExpeditionCostPerKg(expeditionId: Int): Double = executorService.submit( Callable{
-        mDonorBoxDao.getExpeditionCostPerKg(expeditionId)
+    fun getExpeditionServiceDetail(expeditionId: Int): ExpeditionServices = executorService.submit( Callable{
+        mDonorBoxDao.getExpeditionService(expeditionId)
     }).get()
 
     fun insertOrUpdateCash(boxId: Int, categoryName: String, newValue: Double) {

@@ -10,7 +10,6 @@ import com.frhanklindevs.bantukuy.data.BantuKuyRepository
 import com.frhanklindevs.bantukuy.donor.data.api.PlaceDetailResponse
 import com.frhanklindevs.bantukuy.donor.data.api.PlaceDetails
 import com.frhanklindevs.bantukuy.donor.data.box.DonationBoxEntity
-import com.frhanklindevs.bantukuy.donor.ui.detail.DetailSearchViewModel
 import com.frhanklindevs.bantukuy.network.ApiConfig
 import com.frhanklindevs.bantukuy.utils.BantuKuyDev
 import retrofit2.Call
@@ -99,12 +98,15 @@ class DonationBoxWidgetViewModel(application: Application): ViewModel() {
             if (_currentTotalDonationGoodsWeight.value != null) {
 
                 _currentTotalExpeditionFee.value =
-                    _box.value?.let { repository.getExpeditionServiceUsed(it.boxId) }?.let {
-                        repository.getExpeditionCostPerKg(
-                            it
-                        ).toInt()
+                    if (_currentTotalDonationGoodsWeight.value == 0) {
+                        0
+                    } else {
+                        _box.value?.let { repository.getExpeditionServiceUsed(it.boxId) }?.let {
+                            repository.getExpeditionServiceDetail(
+                                it
+                            ).planPricePerKg.toInt() * _currentTotalDonationGoodsWeight.value!!
+                        }
                     }
-
                 if (_currentTotalExpeditionFee.value != null && _currentTotalDonationMoney.value != null) {
                     _currentTotalCost.value = _currentTotalDonationMoney.value!! + _currentTotalExpeditionFee.value!!
                 }

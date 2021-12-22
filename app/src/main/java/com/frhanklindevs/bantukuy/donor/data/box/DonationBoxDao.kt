@@ -6,6 +6,12 @@ import androidx.room.*
 @Dao
 interface DonationBoxDao {
 
+    //Insert starting data
+    @Insert
+    fun insertStartingExpeditionData(expeditionServices: ExpeditionServices)
+
+
+
     //Checking for user's active box
     @Query("SELECT EXISTS(SELECT * FROM dbox_table WHERE (user_id=:userId AND completed=0) LIMIT 1)")
     fun checkIfUserHasActiveBox(userId: Int): Boolean
@@ -39,8 +45,8 @@ interface DonationBoxDao {
     @Query("SELECT donation_service_id FROM expedition_table WHERE box_id=:boxId")
     fun getExpeditionServiceUsed(boxId: Int): Int
 
-    @Query("SELECT planPricePerKg FROM expedition_services WHERE id=:expeditionId")
-    fun getExpeditionCostPerKg(expeditionId: Int): Double
+    @Query("SELECT * FROM expedition_services WHERE id=:expeditionId")
+    fun getExpeditionService(expeditionId: Int): ExpeditionServices
 
 
     //Checking if items is exist in Box

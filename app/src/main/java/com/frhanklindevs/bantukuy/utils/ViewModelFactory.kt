@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.frhanklindevs.bantukuy.donor.ui.detail.DetailSearchViewModel
 import com.frhanklindevs.bantukuy.donor.ui.fragments.box.DonorDonationBoxViewModel
 import com.frhanklindevs.bantukuy.donor.ui.fragments.box.content.DonationContentViewModel
+import com.frhanklindevs.bantukuy.donor.ui.fragments.box.item.expedition.DonationBoxItemExpeditionViewModel
 import com.frhanklindevs.bantukuy.donor.ui.fragments.box.item.home.DonationBoxItemHomeViewModel
 import com.frhanklindevs.bantukuy.donor.ui.fragments.dashboard.DonorDashboardViewModel
 import com.frhanklindevs.bantukuy.donor.ui.fragments.dashboard.widgets.box.DonationBoxWidgetViewModel
@@ -66,6 +67,9 @@ class ViewModelFactory private constructor(private val mApplication: Application
             }
             modelClass.isAssignableFrom(DonationContentViewModel::class.java) -> {
                 DonationContentViewModel(mApplication) as T
+            }
+            modelClass.isAssignableFrom(DonationBoxItemExpeditionViewModel::class.java) -> {
+                DonationBoxItemExpeditionViewModel(mApplication) as T
             }
             else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
         }
