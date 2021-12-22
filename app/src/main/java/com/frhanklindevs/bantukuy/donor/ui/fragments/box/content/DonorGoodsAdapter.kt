@@ -48,7 +48,9 @@ class DonorGoodsAdapter: RecyclerView.Adapter<DonorGoodsAdapter.GoodsViewHolder>
         with(holder) {
             binding.dboxGoodsName.text = item.goodsName
             binding.dboxGoodsDetail.text = convertToKilogram(item.goodsWeight)
-
+            binding.dboxGoodsBtnEdit.setOnClickListener {
+                onItemClickCallback.onEditGoodsBtnClicked(item)
+            }
         }
     }
 

@@ -6,10 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,6 +19,7 @@ import com.frhanklindevs.bantukuy.donor.ui.home.DonorHomeActivity
 import com.frhanklindevs.bantukuy.utils.PopUpCreator
 import com.frhanklindevs.bantukuy.utils.ViewModelFactory
 import com.google.android.material.textfield.TextInputEditText
+import kotlin.math.roundToInt
 
 class DonationBoxContentFragment : Fragment(), DonorMoneyAdapter.OnItemClickCallback, DonorGoodsAdapter.OnItemClickCallback {
 
@@ -28,13 +27,16 @@ class DonationBoxContentFragment : Fragment(), DonorMoneyAdapter.OnItemClickCall
     private val binding get() = _binding!!
 
     private var userId: Int = 0
-    private lateinit var popupAddCash: Dialog
+    private lateinit var popUpAddEdit: Dialog
+    private lateinit var popUpImg: ImageView
     private lateinit var popUpText: TextView
-    private lateinit var cashSpinner: Spinner
-    private lateinit var arrayAdapter: ArrayAdapter<CharSequence>
-    private lateinit var editCashValue: TextInputEditText
-    private lateinit var popUpAddCashBtnConfirm: AppCompatImageButton
+    private lateinit var popUpSpinner: Spinner
+    private lateinit var cashArrayAdapter: ArrayAdapter<CharSequence>
+    private lateinit var goodsArrayAdapter: ArrayAdapter<CharSequence>
+    private lateinit var popUpEditValue: TextInputEditText
+    private lateinit var popUpAddEditBtnConfirm: AppCompatImageButton
     private lateinit var editCashTemp: DonationCashItems
+    private lateinit var editGoodsTemp: DonationGoodsItems
 
     private lateinit var viewModel: DonationContentViewModel
     private lateinit var moneyAdapter: DonorMoneyAdapter
@@ -64,15 +66,27 @@ class DonationBoxContentFragment : Fragment(), DonorMoneyAdapter.OnItemClickCall
     }
 
     private fun setView() {
-        popupAddCash = PopUpCreator.createSmallAddCashPopUpDialog(requireActivity())
-        popUpText = popupAddCash.findViewById(R.id.popup_text)
-        cashSpinner = popupAddCash.findViewById(R.id.popup_cash_spinner)
-        arrayAdapter = ArrayAdapter.createFromResource(requireContext(), R.array.cash_categories, android.R.layout.simple_spinner_item).also {
-            it.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            cashSpinner.adapter = it
-        }
-        editCashValue = popupAddCash.findViewById(R.id.ed_cash_value)
-        popUpAddCashBtnConfirm = popupAddCash.findViewById(R.id.btn_add_money_confirm)
+        popUpAddEdit = PopUpCreator.createSmallAddPopUpDialog(requireActivity())
+        popUpImg = popUpAddEdit.findViewById(R.id.popup_img)
+        popUpText = popUpAddEdit.findViewById(R.id.popup_text)
+        popUpSpinner = popUpAddEdit.findViewById(R.id.popup_spinner)
+        cashArrayAdapter =
+            ArrayAdapter.createFromResource(
+                requireContext(), R.array.spinner_cash_categories,
+                android.R.layout.simple_spinner_item
+            ).also {
+                it.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            }
+        goodsArrayAdapter =
+            ArrayAdapter.createFromResource(
+                requireContext(), R.array.spinner_goods_categories,
+                android.R.layout.simple_spinner_item
+            ).also {
+                it.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                popUpSpinner.adapter = it
+            }
+        popUpEditValue = popUpAddEdit.findViewById(R.id.ed_cash_value)
+        popUpAddEditBtnConfirm = popUpAddEdit.findViewById(R.id.btn_add_money_confirm)
     }
 
     private fun setViewBehaviors() {
@@ -80,48 +94,75 @@ class DonationBoxContentFragment : Fragment(), DonorMoneyAdapter.OnItemClickCall
             viewModel.setBox()
         }
         binding.btnAddMoney.setOnClickListener {
-            editCashValue.setText("")
-            popUpAddCashBtnConfirm.setOnClickListener(addCashAction)
-            popUpAddCashBtnConfirm.setImageDrawable(resources.getDrawable(R.drawable.ic_add_circle_outline_70_white))
-            cashSpinner.isEnabled = true
+            popUpSpinner.adapter = cashArrayAdapter
+
+            popUpImg.setImageDrawable(context?.let { ctx ->
+                AppCompatResources.getDrawable(ctx, R.drawable.ic_baseline_attach_money_80_white)
+            })
+            popUpEditValue.setText("")
+            popUpEditValue.setHint(getString(R.string.cash_hint))
             popUpText.text = getString(R.string.add_cash)
-            popupAddCash.show()
+
+            popUpAddEditBtnConfirm.setOnClickListener(addCashAction)
+            popUpAddEditBtnConfirm.setImageDrawable(context?.let { ctx ->
+                AppCompatResources.getDrawable(ctx, R.drawable.ic_add_circle_outline_70_white)
+            })
+            popUpSpinner.isEnabled = true
+            popUpAddEdit.show()
+        }
+        binding.btnAddGoods.setOnClickListener {
+            popUpSpinner.adapter = goodsArrayAdapter
+
+            popUpImg.setImageDrawable(context?.let { ctx ->
+                AppCompatResources.getDrawable(ctx, R.drawable.ic_box_open_solid)
+            })
+            popUpEditValue.setText("")
+            popUpEditValue.setHint(getString(R.string.weight))
+            popUpText.text = getString(R.string.add_goods)
+
+            popUpAddEditBtnConfirm.setOnClickListener(addGoodsAction)
+            popUpAddEditBtnConfirm.setImageDrawable(context?.let { ctx ->
+                AppCompatResources.getDrawable(ctx, R.drawable.ic_add_circle_outline_70_white)
+            })
+
+            popUpSpinner.isEnabled = true
+            popUpAddEdit.show()
         }
     }
 
     private val addCashAction: View.OnClickListener = View.OnClickListener {
-        if (cashSpinner.selectedItem.toString().isEmpty()) {
+        if (popUpSpinner.selectedItem.toString().isEmpty()) {
             Toast.makeText(requireContext(), "Mohon pilih kategori yang tersedia", Toast.LENGTH_SHORT).show()
         } else {
-            if (editCashValue.text.toString().isEmpty()) {
+            if (popUpEditValue.text.toString().isEmpty()) {
                 Toast.makeText(requireContext(), "Mohon masukan nominal donasi", Toast.LENGTH_SHORT).show()
             } else {
-                val value = editCashValue.text.toString().toDouble()
+                val value = popUpEditValue.text.toString().toDouble()
                 if (value <= 0) {
                     Toast.makeText(requireContext(), "Mohon masukan nominal yang valid", Toast.LENGTH_SHORT).show()
                 } else {
-                    val category = cashSpinner.selectedItem.toString()
+                    val category = popUpSpinner.selectedItem.toString()
 
                     viewModel.insertOrUpdateCash(category, value)
-                    editCashValue.setText("")
-                    popupAddCash.dismiss()
+                    popUpEditValue.setText("")
+                    popUpAddEdit.dismiss()
                 }
             }
         }
     }
 
     private val editCashAction: View.OnClickListener = View.OnClickListener {
-        if (cashSpinner.selectedItem.toString().isEmpty()) {
+        if (popUpSpinner.selectedItem.toString().isEmpty()) {
             Toast.makeText(requireContext(), "Mohon pilih kategori yang tersedia", Toast.LENGTH_SHORT).show()
         } else {
-            if (editCashValue.text.toString().isEmpty()) {
+            if (popUpEditValue.text.toString().isEmpty()) {
                 Toast.makeText(requireContext(), "Mohon masukan nominal donasi", Toast.LENGTH_SHORT).show()
             } else {
-                val value = editCashValue.text.toString().toDouble()
+                val value = popUpEditValue.text.toString().toDouble()
                 if (value <= 0) {
                     Toast.makeText(requireContext(), "Mohon masukan nominal yang valid", Toast.LENGTH_SHORT).show()
                 } else {
-                    val category = cashSpinner.selectedItem.toString()
+                    val category = popUpSpinner.selectedItem.toString()
 
                     val updatedCash = DonationCashItems(
                         editCashTemp.boxId,
@@ -131,8 +172,58 @@ class DonationBoxContentFragment : Fragment(), DonorMoneyAdapter.OnItemClickCall
                     )
 
                     viewModel.updateCash(updatedCash)
-                    editCashValue.setText("")
-                    popupAddCash.dismiss()
+                    popUpEditValue.setText("")
+                    popUpAddEdit.dismiss()
+                }
+            }
+        }
+    }
+
+    private val addGoodsAction: View.OnClickListener = View.OnClickListener {
+        if (popUpSpinner.selectedItem.toString().isEmpty()) {
+            Toast.makeText(requireContext(), "Mohon pilih kategori yang tersedia", Toast.LENGTH_SHORT).show()
+        } else {
+            if (popUpEditValue.text.toString().isEmpty()) {
+                Toast.makeText(requireContext(), "Mohon masukan bobot barang", Toast.LENGTH_SHORT).show()
+            } else {
+                val value = popUpEditValue.text.toString().toInt()
+                if (value <= 0) {
+                    Toast.makeText(requireContext(), "Mohon masukan bobot yang valid", Toast.LENGTH_SHORT).show()
+                } else {
+                    val category = popUpSpinner.selectedItem.toString()
+
+                    viewModel.insertOrUpdateGoods(category, value)
+                    popUpEditValue.setText("")
+                    popUpAddEdit.dismiss()
+
+                }
+            }
+        }
+    }
+
+    private val editGoodsAction: View.OnClickListener = View.OnClickListener {
+        if (popUpSpinner.selectedItem.toString().isEmpty()) {
+            Toast.makeText(requireContext(), "Mohon pilih kategori yang tersedia", Toast.LENGTH_SHORT).show()
+        } else {
+            if (popUpEditValue.text.toString().isEmpty()) {
+                Toast.makeText(requireContext(), "Mohon masukan bobot donasi", Toast.LENGTH_SHORT).show()
+            } else {
+                val value = popUpEditValue.text.toString().toDouble().roundToInt()
+                if (value <= 0) {
+                    Toast.makeText(requireContext(), "Mohon masukan bobot yang valid", Toast.LENGTH_SHORT).show()
+                } else {
+                    val category = popUpSpinner.selectedItem.toString()
+
+                    val updatedGoods = DonationGoodsItems(
+                        editGoodsTemp.boxId,
+                        editGoodsTemp.id,
+                        category,
+                        value
+                    )
+
+                    viewModel.updateGoods(updatedGoods)
+                    popUpEditValue.setText("")
+                    popUpAddEdit.dismiss()
                 }
             }
         }
@@ -156,11 +247,13 @@ class DonationBoxContentFragment : Fragment(), DonorMoneyAdapter.OnItemClickCall
         })
         viewModel.listGoods.observe(viewLifecycleOwner, {
             if (it != null) {
+                println("Goods item counte: ${it.size}")
                 goodsAdapter.setListGoods(it)
                 goodsAdapter.setOnItemClickCallback(this)
-                binding.rvGoods.layoutManager = LinearLayoutManager(requireContext())
+                binding.rvGoods.layoutManager = LinearLayoutManager(activity)
                 binding.rvGoods.adapter = goodsAdapter
                 binding.rvGoods.setHasFixedSize(true)
+                binding.rvGoods.isNestedScrollingEnabled = true
             }
         })
 
@@ -168,22 +261,49 @@ class DonationBoxContentFragment : Fragment(), DonorMoneyAdapter.OnItemClickCall
     }
 
     override fun onEditCashValueBtnClicked(cashItem: DonationCashItems) {
+        popUpSpinner.adapter = cashArrayAdapter
         editCashTemp = cashItem
 
-        popUpAddCashBtnConfirm.setImageDrawable(resources.getDrawable(R.drawable.ic_pen))
-        popUpAddCashBtnConfirm.setOnClickListener(editCashAction)
+        popUpImg.setImageDrawable(context?.let { ctx ->
+            AppCompatResources.getDrawable(ctx, R.drawable.ic_baseline_attach_money_80_white)
+        })
+        popUpAddEditBtnConfirm.setImageDrawable(context?.let { ctx ->
+            AppCompatResources.getDrawable(ctx, R.drawable.ic_pen)
+        })
+        popUpAddEditBtnConfirm.setOnClickListener(editCashAction)
         popUpText.text = getString(R.string.edit_cash)
 
-        val spinnerPosttion = arrayAdapter.getPosition(cashItem.cashName)
-        cashSpinner.setSelection(spinnerPosttion)
-        cashSpinner.isEnabled = false
-        editCashValue.setText("${cashItem.cashValue}")
+        val spinnerPosttion = cashArrayAdapter.getPosition(cashItem.cashName)
+        popUpSpinner.setSelection(spinnerPosttion)
+        popUpSpinner.isEnabled = false
+        popUpEditValue.setText("${cashItem.cashValue}")
+        popUpEditValue.setHint(getString(R.string.cash_hint))
 
-        popupAddCash.show()
+        popUpAddEdit.show()
     }
 
     override fun onEditGoodsBtnClicked(goodsItem: DonationGoodsItems) {
         //TODO: Implement Edit Button Behavior for Goods Item
+        popUpSpinner.adapter = goodsArrayAdapter
+        editGoodsTemp = goodsItem
+
+        popUpImg.setImageDrawable(context?.let { ctx ->
+            AppCompatResources.getDrawable(ctx, R.drawable.ic_box_open_solid)
+        })
+        popUpAddEditBtnConfirm.setImageDrawable(context?.let { ctx ->
+            AppCompatResources.getDrawable(ctx, R.drawable.ic_pen)
+        })
+        popUpAddEditBtnConfirm.setOnClickListener(editGoodsAction)
+        popUpText.text = getString(R.string.edit_goods)
+
+        val spinnerPosttion = goodsArrayAdapter.getPosition(goodsItem.goodsName)
+        popUpSpinner.setSelection(spinnerPosttion)
+        popUpSpinner.isEnabled = false
+        popUpEditValue.setText(goodsItem.goodsWeight.toString())
+        popUpEditValue.setText("${editGoodsTemp.goodsWeight}")
+        popUpEditValue.setHint(getString(R.string.weight))
+
+        popUpAddEdit.show()
     }
 
     override fun onDeleteGoodsBtnClicked(goodsItem: DonationGoodsItems) {

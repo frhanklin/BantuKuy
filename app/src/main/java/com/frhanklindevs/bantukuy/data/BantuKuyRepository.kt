@@ -136,6 +136,34 @@ class BantuKuyRepository(application: Application) {
         }
     }
 
+    fun insertOrUpdateGoods(boxId: Int, categoryName: String, newValue: Int) {
+        executorService.execute {
+            val goodsExists = mDonorBoxDao.checkGoodsItem(boxId, categoryName)
+            if (goodsExists) {
+                //Update existing data
+                val itemId = mDonorBoxDao.getGoodsItemId(boxId, categoryName)
+                val item = mDonorBoxDao.getGoodsById(itemId)
+                val currentValue = item.goodsWeight + newValue
+
+                val updatedItem = DonationGoodsItems(
+                    boxId = boxId,
+                    id = itemId,
+                    goodsName = categoryName,
+                    goodsWeight = currentValue
+                )
+                mDonorBoxDao.updateGoods(updatedItem)
+            } else {
+                //Insert new data
+                val newItem = DonationGoodsItems(
+                    boxId = boxId,
+                    goodsName = categoryName,
+                    goodsWeight = newValue
+                )
+                mDonorBoxDao.insertGoodsToBox(newItem)
+            }
+        }
+    }
+
     fun checkCash(boxId: Int, categoryName: String): Boolean = executorService.submit(Callable {
         mDonorBoxDao.checkCashItem(boxId, categoryName)
     }).get()
