@@ -192,21 +192,7 @@ class DonationContentViewModel(application: Application): ViewModel() {
     }
 
     fun updateBoxCompleted(){
-        val handler = Handler(Looper.getMainLooper())
-        handler.post{
-            repository.updateBoxCompleted(_boxId.value!!)
-            _box.value = repository.getUserActiveBox(_userId.value!!)
-            if (_box.value != null) {
-                _boxId.value = _box.value!!.boxId
-
-                _expeditionId.value = repository.getExpeditionServiceUsed(_boxId.value!!)
-                _expeditionDetail.value = repository.getExpeditionServiceDetail(_expeditionId.value!!)
-                initializeItemLists()
-                setPlace()
-                setOverview()
-            }
-        }
-
+        repository.updateBoxCompleted(_boxId.value!!)
     }
 
     fun getUserId() : Int{

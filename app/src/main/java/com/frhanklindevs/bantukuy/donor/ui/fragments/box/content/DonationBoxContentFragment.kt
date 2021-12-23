@@ -178,6 +178,7 @@ class DonationBoxContentFragment : Fragment(), DonorMoneyAdapter.OnItemClickCall
                 viewModel.updateBoxCompleted()
                 popUpPay.dismiss()
 
+                activity?.finish()
 
             }, 1000)
 
