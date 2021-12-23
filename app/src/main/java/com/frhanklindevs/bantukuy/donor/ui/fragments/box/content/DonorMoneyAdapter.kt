@@ -29,6 +29,7 @@ class DonorMoneyAdapter: RecyclerView.Adapter<DonorMoneyAdapter.MoneyViewHolder>
     }
     interface OnItemClickCallback {
         fun onEditCashValueBtnClicked(cashItem: DonationCashItems)
+        fun onDeleteCashValueBtnClicked(cashItem: DonationCashItems)
     }
     private lateinit var onItemClickCallback: OnItemClickCallback
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
@@ -48,6 +49,9 @@ class DonorMoneyAdapter: RecyclerView.Adapter<DonorMoneyAdapter.MoneyViewHolder>
             binding.dboxBoxMoneyValue.text = convertToRupiah(item.cashValue.toInt())
             binding.dboxBoxMoneyBtnEdit.setOnClickListener {
                 onItemClickCallback.onEditCashValueBtnClicked(item)
+            }
+            binding.dboxBoxMoneyBtnDel.setOnClickListener {
+                onItemClickCallback.onDeleteCashValueBtnClicked(item)
             }
         }
     }

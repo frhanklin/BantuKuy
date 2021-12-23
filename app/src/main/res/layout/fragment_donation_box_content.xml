@@ -14,22 +14,137 @@
         android:padding="17dp">
 
         <!--BantuDonasiTitle-->
-        <TextView
-            android:id="@+id/donor_box_tv_greetings_title"
-            style="@style/Oxygen_Bold_Black_24"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/bantudonasi"
-            tools:text="BantuDonasi"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/header_bantu_donasi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/donor_box_tv_greetings_title"
+                style="@style/Oxygen_Bold_Black_24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bantudonasi"
+                tools:text="BantuDonasi"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <ImageButton
+                android:id="@+id/btn_reload"
+                android:contentDescription="@string/refresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_refresh_black"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+<!--        <TextView-->
+<!--            android:id="@+id/donor_box_tv_greetings_title"-->
+<!--            style="@style/Oxygen_Bold_Black_24"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/bantudonasi"-->
+<!--            tools:text="BantuDonasi"/>-->
 
         <!--Home Container-->
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/box_frag_home"
+<!--        <androidx.fragment.app.FragmentContainerView-->
+<!--            android:id="@+id/box_frag_home"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:layout_marginBottom="8dp"-->
+<!--            android:name="com.frhanklindevs.bantukuy.donor.ui.fragments.box.item.home.DonationBoxItemHome"/>-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/dbox_home_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:name="com.frhanklindevs.bantukuy.donor.ui.fragments.box.item.home.DonationBoxItemHome"/>
+            tools:context=".donor.ui.fragments.box.item.home.DonationBoxItemHome">
+
+            <TextView
+                android:id="@+id/dbox_home_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Oxygen_Bold_Black_18"
+                android:text="@string/tujuan"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+<!--            <ImageButton-->
+<!--                android:id="@+id/btn_reload"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@android:color/transparent"-->
+<!--                android:src="@drawable/ic_refresh_black"-->
+<!--                app:layout_constraintTop_toTopOf="@id/dbox_home_title"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"/>-->
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/dbox_home_contents"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dbox_home_title">
+
+                <ImageView
+                    android:id="@+id/dbox_home_img"
+                    android:layout_width="160dp"
+                    android:layout_height="120dp"
+                    android:padding="4dp"
+                    android:background="@drawable/rounded_background_white_border"
+                    android:src="@drawable/ic_baseline_location_on_24_primary"
+                    android:contentDescription="@string/panti_tujuan"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <TextView
+                    android:id="@+id/dbox_home_name"
+                    style="@style/Oxygen_Bold_Black_14"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/home_name"
+                    android:maxLines="3"
+                    android:ellipsize="end"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/dbox_home_img"
+                    app:layout_constraintStart_toEndOf="@id/dbox_home_img" />
+
+                <TextView
+                    android:id="@+id/dbox_home_address"
+                    style="@style/Oxygen_Bold_Black_12"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/home_address"
+                    android:maxLines="3"
+                    android:ellipsize="end"
+                    app:layout_constraintStart_toEndOf="@id/dbox_home_img"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/dbox_home_name"
+                    app:layout_constraintBottom_toBottomOf="@id/dbox_home_img"/>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/dbox_home_warning"
+                style="@style/Oxygen_Bold_Black_12"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/home_not_selected"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dbox_home_title"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!--Donation Box Container-->
         <LinearLayout
@@ -51,14 +166,14 @@
                     android:text="@string/kotak_sumbanganku"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"/>
-                <ImageButton
-                    android:id="@+id/btn_reload"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:src="@drawable/ic_refresh_black"
-                    app:layout_constraintTop_toTopOf="@id/dbox_box_title"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+<!--                <ImageButton-->
+<!--                    android:id="@+id/btn_reload"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@android:color/transparent"-->
+<!--                    android:src="@drawable/ic_refresh_black"-->
+<!--                    app:layout_constraintTop_toTopOf="@id/dbox_box_title"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"/>-->
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -74,6 +189,7 @@
                 style="@style/Oxygen_Bold_Black_18"
                 android:text="@string/uang" />
             <!--Cash Donation Item-->
+            <!--Add to Database Btn-->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_money"
                 android:layout_width="match_parent"
@@ -81,8 +197,8 @@
                 android:clipToPadding="false"
                 android:scrollbars="vertical"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                tools:listitem="@layout/fragment_donation_box_item_money"/>
-            <!--Add to Database Btn-->
+                tools:listitem="@layout/fragment_donation_box_item_money" />
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_add_money"
                 android:layout_width="match_parent"
@@ -134,13 +250,76 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/expedition"/>
             <!--Content-->
-            <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/box_frag_expedition"
+<!--            <androidx.fragment.app.FragmentContainerView-->
+<!--                android:id="@+id/box_frag_expedition"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:layout_marginBottom="8dp"-->
+<!--                android:name="com.frhanklindevs.bantukuy.donor.ui.fragments.box.item.expedition.DonationBoxItemExpedition"/>-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/dbox_expedition_contents"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:name="com.frhanklindevs.bantukuy.donor.ui.fragments.box.item.expedition.DonationBoxItemExpedition"/>
+                android:layout_height="90dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+
+                <ImageView
+                    android:id="@+id/dbox_expedition_img"
+                    android:layout_width="120dp"
+                    android:layout_height="90dp"
+                    android:background="@drawable/rounded_background_white_border"
+                    android:src="@drawable/ic_baseline_airplane_ticket_80"
+                    android:contentDescription="@string/uang"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <TextView
+                    android:id="@+id/dbox_expedition_name"
+                    style="@style/Oxygen_Bold_Black_14"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:text="@string/penyedia_layanan_pengiriman"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/dbox_expedition_img"
+                    app:layout_constraintStart_toEndOf="@id/dbox_expedition_img" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/dbox_expedition_btn"
+                    android:visibility="gone"
+                    android:layout_width="60dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="4dp"
+                    android:text="@string/ubah"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/inter_black_family"
+                    android:background="@drawable/rounded_background_primary_border"
+                    app:layout_constraintBottom_toTopOf="@id/dbox_expedition_value"
+                    app:layout_constraintStart_toEndOf="@id/dbox_expedition_img"/>
+
+                <TextView
+                    android:id="@+id/dbox_expedition_value"
+                    style="@style/Oxygen_Bold_Black_12"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/expedition_service"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    app:layout_constraintStart_toEndOf="@id/dbox_expedition_img"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@id/dbox_expedition_img"/>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
 
@@ -149,13 +328,145 @@
         </LinearLayout>
 
         <!--Donation Box Overview-->
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/box_frag_overview"
+<!--        <androidx.fragment.app.FragmentContainerView-->
+<!--            android:id="@+id/box_frag_overview"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:layout_marginBottom="8dp"-->
+<!--            android:name="com.frhanklindevs.bantukuy.donor.ui.fragments.box.item.DonationBoxOverview"/>-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/coontainer_overview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:name="com.frhanklindevs.bantukuy.donor.ui.fragments.box.item.DonationBoxOverview"/>
+            android:background="@drawable/rounded_background_white_border"
+            android:layout_marginTop="16dp"
+            tools:context=".donor.ui.fragments.box.item.DonationBoxOverview">
+
+            <TextView
+                android:id="@+id/dbox_overview_title"
+                style="@style/Oxygen_Bold_Black_20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/donor_overview"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/dbox_overview_contents"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintTop_toBottomOf="@id/dbox_overview_title"
+                app:layout_constraintStart_toStartOf="@id/dbox_overview_title"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:id="@+id/dbox_overview_cash_title"
+                    style="@style/Oxygen_Bold_Black_14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/uang"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                    android:id="@+id/dbox_overview_cash_value"
+                    style="@style/Oxygen_Bold_Black_14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/rupiah"
+                    app:layout_constraintTop_toTopOf="@id/dbox_overview_cash_title"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <TextView
+                    android:id="@+id/dbox_overview_goods_title"
+                    style="@style/Oxygen_Bold_Black_14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/barang"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/dbox_overview_cash_title"/>
+
+                <TextView
+                    android:id="@+id/dbox_overview_goods_value"
+                    style="@style/Oxygen_Bold_Black_14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/kilogram"
+                    app:layout_constraintTop_toTopOf="@id/dbox_overview_goods_title"
+                    app:layout_constraintEnd_toEndOf="@id/dbox_overview_cash_value"/>
+
+                <TextView
+                    android:id="@+id/dbox_overview_expedition_title"
+                    style="@style/Oxygen_Bold_Black_14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/expedition"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/dbox_overview_goods_title"/>
+
+                <TextView
+                    android:id="@+id/dbox_overview_expedition_value"
+                    style="@style/Oxygen_Bold_Black_14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rupiah"
+                    app:layout_constraintTop_toTopOf="@id/dbox_overview_expedition_title"
+                    app:layout_constraintEnd_toEndOf="@id/dbox_overview_cash_value"/>
+
+                <TextView
+                    android:id="@+id/dbox_overview_total_title"
+                    style="@style/Oxygen_Bold_Black_14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/total"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/dbox_overview_expedition_title"/>
+
+                <TextView
+                    android:id="@+id/dbox_overview_total_value"
+                    style="@style/Oxygen_Bold_Black_14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rupiah"
+                    app:layout_constraintTop_toTopOf="@id/dbox_overview_total_title"
+                    app:layout_constraintEnd_toEndOf="@id/dbox_overview_cash_value"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/donation_box_btn_donate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:paddingHorizontal="16dp"
+                    android:background="@drawable/rounded_background_secondary_3"
+                    android:text="@string/select_payment"
+                    android:fontFamily="@font/inter_black_family"
+                    app:layout_constraintTop_toBottomOf="@id/dbox_overview_total_value"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <LinearLayout
+                android:id="@+id/dbox_overview_placeholder"
+                android:layout_width="match_parent"
+                android:layout_height="16dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/dbox_overview_contents"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!--Placeholder-->
         <LinearLayout

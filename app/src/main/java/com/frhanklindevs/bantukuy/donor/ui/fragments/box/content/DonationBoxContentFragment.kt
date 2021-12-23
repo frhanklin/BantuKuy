@@ -1,6 +1,7 @@
 package com.frhanklindevs.bantukuy.donor.ui.fragments.box.content
 
 import android.app.Dialog
+import android.icu.text.NumberFormat
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,6 +12,8 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.frhanklindevs.bantukuy.R
 import com.frhanklindevs.bantukuy.databinding.FragmentDonationBoxContentBinding
 import com.frhanklindevs.bantukuy.donor.data.box.DonationCashItems
@@ -20,6 +23,7 @@ import com.frhanklindevs.bantukuy.utils.PopUpCreator
 import com.frhanklindevs.bantukuy.utils.ViewModelFactory
 import com.google.android.material.textfield.TextInputEditText
 import okhttp3.internal.format
+import java.util.*
 import kotlin.math.roundToInt
 
 class DonationBoxContentFragment : Fragment(), DonorMoneyAdapter.OnItemClickCallback, DonorGoodsAdapter.OnItemClickCallback {
@@ -118,7 +122,7 @@ class DonationBoxContentFragment : Fragment(), DonorMoneyAdapter.OnItemClickCall
                 AppCompatResources.getDrawable(ctx, R.drawable.ic_baseline_attach_money_80_white)
             })
             popUpEditValue.setText("")
-            popUpEditValue.setHint(getString(R.string.cash_hint))
+            popUpEditValue.hint = getString(R.string.cash_hint)
             popUpText.text = getString(R.string.add_cash)
 
             popUpAddEditBtnConfirm.setOnClickListener(addCashAction)
@@ -135,7 +139,7 @@ class DonationBoxContentFragment : Fragment(), DonorMoneyAdapter.OnItemClickCall
                 AppCompatResources.getDrawable(ctx, R.drawable.ic_box_open_solid)
             })
             popUpEditValue.setText("")
-            popUpEditValue.setHint(getString(R.string.weight))
+            popUpEditValue.hint = getString(R.string.weight)
             popUpText.text = getString(R.string.add_goods)
 
             popUpAddEditBtnConfirm.setOnClickListener(addGoodsAction)
@@ -146,10 +150,7 @@ class DonationBoxContentFragment : Fragment(), DonorMoneyAdapter.OnItemClickCall
             popUpSpinner.isEnabled = true
             popUpAddEdit.show()
         }
-        popUpDeleteBtnConfirm.setOnClickListener {
-            viewModel.deleteGoods(editGoodsTemp)
-            popUpDelete.dismiss()
-        }
+
         popUpDeleteBtnCancel.setOnClickListener {
             popUpDelText.text = ""
             popUpDelete.dismiss()
@@ -262,6 +263,21 @@ class DonationBoxContentFragment : Fragment(), DonorMoneyAdapter.OnItemClickCall
         moneyAdapter = DonorMoneyAdapter()
         goodsAdapter = DonorGoodsAdapter()
 
+        viewModel.homeName.observe(viewLifecycleOwner, {
+            binding.dboxHomeName.text = it
+        })
+        viewModel.homeAddress.observe(viewLifecycleOwner, {
+            binding.dboxHomeAddress.text = it
+        })
+        viewModel.homeImageUrl.observe(viewLifecycleOwner, {
+            Glide.with(this)
+                .load(it)
+                .apply(
+                    RequestOptions.placeholderOf(R.drawable.ic_loading)
+                        .error(R.drawable.ic_error))
+                .into(binding.dboxHomeImg)
+        })
+
         viewModel.listMoney.observe(viewLifecycleOwner, {
             if (it != null) {
                 moneyAdapter.setListMoney(it)
@@ -284,7 +300,40 @@ class DonationBoxContentFragment : Fragment(), DonorMoneyAdapter.OnItemClickCall
             }
         })
 
+        viewModel.expeditionDetail.observe(viewLifecycleOwner, {
+            binding.dboxExpeditionName.text = it.expeditionCompany
+            binding.dboxExpeditionValue.text = it.planName
+        })
+
+        viewModel.currentTotalDonationMoney.observe(viewLifecycleOwner, {
+            binding.dboxOverviewCashValue.text = convertCurrency(it)
+        })
+        viewModel.currentTotalDonationGoodsWeight.observe(viewLifecycleOwner, {
+            binding.dboxOverviewGoodsValue.text = String.format(getString(R.string.format_kilogram), it.toString())
+        })
+        viewModel.currentTotalExpeditionFee.observe(viewLifecycleOwner, {
+            binding.dboxOverviewExpeditionValue.text = convertCurrency(it)
+        })
+        viewModel.currentTotalCost.observe(viewLifecycleOwner, {
+            binding.dboxOverviewTotalValue.text = convertCurrency(it)
+        })
+        viewModel.isDonateable.observe(viewLifecycleOwner, {
+            binding.donationBoxBtnDonate.visibility = if (it) View.VISIBLE else View.GONE
+        })
+
+
+
         viewModel.setUserId(userId)
+    }
+
+    private fun convertCurrency(value: Int?): CharSequence {
+        return if (value != null) {
+            val valueString = NumberFormat.getNumberInstance(Locale.US).format(value)
+            String.format(getString(R.string.format_rupiah), valueString)
+        } else {
+            val valueString = 0
+            String.format(getString(R.string.format_rupiah), valueString)
+        }
     }
 
     override fun onEditCashValueBtnClicked(cashItem: DonationCashItems) {
@@ -304,13 +353,12 @@ class DonationBoxContentFragment : Fragment(), DonorMoneyAdapter.OnItemClickCall
         popUpSpinner.setSelection(spinnerPosttion)
         popUpSpinner.isEnabled = false
         popUpEditValue.setText("${cashItem.cashValue}")
-        popUpEditValue.setHint(getString(R.string.cash_hint))
+        popUpEditValue.hint = getString(R.string.cash_hint)
 
         popUpAddEdit.show()
     }
 
     override fun onEditGoodsBtnClicked(goodsItem: DonationGoodsItems) {
-        //TODO: Implement Edit Button Behavior for Goods Item
         popUpSpinner.adapter = goodsArrayAdapter
         editGoodsTemp = goodsItem
 
@@ -328,15 +376,32 @@ class DonationBoxContentFragment : Fragment(), DonorMoneyAdapter.OnItemClickCall
         popUpSpinner.isEnabled = false
         popUpEditValue.setText(goodsItem.goodsWeight.toString())
         popUpEditValue.setText("${editGoodsTemp.goodsWeight}")
-        popUpEditValue.setHint(getString(R.string.weight))
+        popUpEditValue.hint = getString(R.string.weight)
 
         popUpAddEdit.show()
     }
 
+    override fun onDeleteCashValueBtnClicked(cashItem: DonationCashItems) {
+        editCashTemp = cashItem
+        val textPlaceholder = getString(R.string.popup_del_cash_placeholder)
+
+        popUpDeleteBtnConfirm.setOnClickListener {
+            viewModel.deleteCash(editCashTemp)
+            popUpDelete.dismiss()
+        }
+
+        popUpDelText.text = format(textPlaceholder, cashItem.cashName, convertCurrency(cashItem.cashValue.roundToInt()))
+        popUpDelete.show()
+    }
+
     override fun onDeleteGoodsBtnClicked(goodsItem: DonationGoodsItems) {
-        //TODO: Implement Delete Button Behavior for Goods Item
         editGoodsTemp = goodsItem
         val textPlaceholder = getString(R.string.popup_del_goods_placeholder)
+
+        popUpDeleteBtnConfirm.setOnClickListener {
+            viewModel.deleteGoods(editGoodsTemp)
+            popUpDelete.dismiss()
+        }
 
         popUpDelText.text = format(textPlaceholder, goodsItem.goodsName, goodsItem.goodsWeight)
         popUpDelete.show()

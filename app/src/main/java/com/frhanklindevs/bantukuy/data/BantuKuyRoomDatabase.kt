@@ -56,16 +56,16 @@ abstract class BantuKuyRoomDatabase : RoomDatabase(){
         private fun fillWithStartingData(donorBoxDao: DonationBoxDao, userDao: UserDao) {
             donorBoxDao.insertStartingExpeditionData(
                 ExpeditionServices(
-                    expeditionCompany = "JNE",
+                    expeditionCompany = "BantuKuy Expedition",
                     planName = "Reguler",
-                    planPricePerKg = 28000.0
+                    planPricePerKg = 3000.0
                 )
             )
             userDao.insert(
                 UserEntity(
                     fullName = "AK",
-                    email = "landarlan60@gmail.com",
-                    userName = "admin",
+                    email = "A014R4042@dicoding.org",
+                    userName = "test",
                     password = "11111111"
                 )
             )
