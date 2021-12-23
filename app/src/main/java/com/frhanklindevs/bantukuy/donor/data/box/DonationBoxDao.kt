@@ -24,6 +24,11 @@ interface DonationBoxDao {
     @Query("SELECT * FROM dbox_table WHERE (user_id=:userId AND completed=0) LIMIT 1")
     fun getAnActiveBoxForUser(userId: Int): DonationBoxEntity
 
+    //Update Donation is Completed by ID
+    @Query("UPDATE dbox_table SET completed=1 WHERE box_id=:boxId")
+    fun updateDonationBox(boxId: Int)
+
+
     //Updates the place ID of certain box
     @Query("UPDATE dbox_table SET place_id=:placeId WHERE box_id=:boxId")
     fun updatePlaceByBoxId(boxId: Int, placeId: String)

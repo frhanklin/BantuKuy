@@ -206,4 +206,10 @@ class BantuKuyRepository(application: Application) {
         }
     }
 
+    fun updateBoxCompleted(boxId: Int){
+        executorService.execute {
+            mDonorBoxDao.updateDonationBox(boxId)
+        }
+    }
+
 }

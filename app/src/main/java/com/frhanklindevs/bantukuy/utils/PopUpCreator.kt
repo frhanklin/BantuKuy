@@ -30,4 +30,11 @@ object PopUpCreator {
 
         return popUp
     }
+
+    fun paymentConfirmation(context: Context): Dialog {
+        val popUp = Dialog(context)
+        popUp.setContentView(R.layout.pop_up_pay)
+        popUp.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        return popUp
+    }
 }

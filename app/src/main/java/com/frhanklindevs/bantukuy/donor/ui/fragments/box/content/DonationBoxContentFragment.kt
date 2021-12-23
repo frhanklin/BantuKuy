@@ -1,8 +1,11 @@
 package com.frhanklindevs.bantukuy.donor.ui.fragments.box.content
 
 import android.app.Dialog
+import android.content.Intent
 import android.icu.text.NumberFormat
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -22,6 +25,7 @@ import com.frhanklindevs.bantukuy.donor.ui.home.DonorHomeActivity
 import com.frhanklindevs.bantukuy.utils.PopUpCreator
 import com.frhanklindevs.bantukuy.utils.ViewModelFactory
 import com.google.android.material.textfield.TextInputEditText
+import kotlinx.coroutines.delay
 import okhttp3.internal.format
 import java.util.*
 import kotlin.math.roundToInt
@@ -32,13 +36,15 @@ class DonationBoxContentFragment : Fragment(), DonorMoneyAdapter.OnItemClickCall
     private val binding get() = _binding!!
 
     private var userId: Int = 0
+
     private lateinit var popUpAddEdit: Dialog
     private lateinit var popUpDelete: Dialog
-
+    private lateinit var popUpPay:Dialog
     private lateinit var popUpImg: ImageView
 
     private lateinit var popUpText: TextView
     private lateinit var popUpDelText: TextView
+    private lateinit var popUpPayText: TextView
 
     private lateinit var popUpSpinner: Spinner
     private lateinit var cashArrayAdapter: ArrayAdapter<CharSequence>
@@ -48,6 +54,8 @@ class DonationBoxContentFragment : Fragment(), DonorMoneyAdapter.OnItemClickCall
     private lateinit var popUpAddEditBtnConfirm: AppCompatImageButton
     private lateinit var popUpDeleteBtnConfirm: AppCompatImageButton
     private lateinit var popUpDeleteBtnCancel: AppCompatImageButton
+    private lateinit var popUpPayBtnConfirm: AppCompatImageButton
+    private lateinit var popUpPayBtnCancel: AppCompatImageButton
 
     private lateinit var editCashTemp: DonationCashItems
     private lateinit var editGoodsTemp: DonationGoodsItems
@@ -82,11 +90,13 @@ class DonationBoxContentFragment : Fragment(), DonorMoneyAdapter.OnItemClickCall
     private fun setView() {
         popUpAddEdit = PopUpCreator.createSmallAddPopUpDialog(requireActivity())
         popUpDelete = PopUpCreator.createSmallDelPopUpDialog(requireActivity())
+        popUpPay = PopUpCreator.paymentConfirmation(requireActivity())
 
         popUpImg = popUpAddEdit.findViewById(R.id.popup_img)
 
         popUpText = popUpAddEdit.findViewById(R.id.popup_text)
         popUpDelText = popUpDelete.findViewById(R.id.popup_del_detail_text)
+        popUpPayText = popUpPay.findViewById(R.id.popup_pay_detail_text)
 
         popUpSpinner = popUpAddEdit.findViewById(R.id.popup_spinner)
         cashArrayAdapter =
@@ -109,6 +119,8 @@ class DonationBoxContentFragment : Fragment(), DonorMoneyAdapter.OnItemClickCall
         popUpAddEditBtnConfirm = popUpAddEdit.findViewById(R.id.btn_add_confirm)
         popUpDeleteBtnConfirm = popUpDelete.findViewById(R.id.btn_del_confirm)
         popUpDeleteBtnCancel = popUpDelete.findViewById(R.id.btn_del_cancel)
+        popUpPayBtnConfirm = popUpPay.findViewById(R.id.btn_pay_confirm)
+        popUpPayBtnCancel = popUpPay.findViewById(R.id.btn_pay_cancel)
     }
 
     private fun setViewBehaviors() {
@@ -154,6 +166,33 @@ class DonationBoxContentFragment : Fragment(), DonorMoneyAdapter.OnItemClickCall
         popUpDeleteBtnCancel.setOnClickListener {
             popUpDelText.text = ""
             popUpDelete.dismiss()
+        }
+
+        popUpPayBtnConfirm.setOnClickListener{
+            val handler = Handler(Looper.getMainLooper())
+            popUpPayBtnConfirm.visibility = View.GONE
+            popUpPayBtnCancel.visibility = View.GONE
+            popUpPayText.text = "Memroses..."
+            handler.postDelayed({
+                popUpPayText.text = "Selesai"
+                viewModel.updateBoxCompleted()
+                popUpPay.dismiss()
+
+
+            }, 1000)
+
+
+        }
+
+        popUpPayBtnCancel.setOnClickListener{
+            popUpPay.dismiss()
+        }
+
+        binding.donationBoxBtnDonate.setOnClickListener{
+            popUpPayBtnConfirm.visibility = View.VISIBLE
+            popUpPayBtnCancel.visibility = View.VISIBLE
+
+            popUpPay.show()
         }
     }
 
