@@ -68,6 +68,18 @@
                     app:layout_constraintBottom_toTopOf="@id/dbox_box_money_value"
                     app:layout_constraintStart_toEndOf="@id/dbox_box_money_img"/>
 
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/dbox_box_money_btn_del"
+                    android:layout_width="66dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/hapus"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/inter_black_family"
+                    android:background="@drawable/rounded_background_red_border"
+                    app:layout_constraintTop_toTopOf="@id/dbox_box_money_btn_edit"
+                    app:layout_constraintStart_toEndOf="@id/dbox_box_money_btn_edit"/>
+
                 <TextView
                     android:id="@+id/dbox_box_money_value"
                     style="@style/Oxygen_Bold_Black_12"

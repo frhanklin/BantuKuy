@@ -45,32 +45,12 @@ class DonationBoxWidgetViewModel(application: Application): ViewModel() {
     private val _currentTotalCost = MutableLiveData<Int>()
     val currentTotalCost: LiveData<Int> = _currentTotalCost
 
+    private val _donationButtonEnabled = MutableLiveData<Boolean>()
+    val donationButtonEnabled: LiveData<Boolean> = _donationButtonEnabled
+
     private val _box = MutableLiveData<DonationBoxEntity>()
     val box : LiveData<DonationBoxEntity> = _box
 
-    init {
-        //TODO: Get Home Name from Database
-        _homeName.value = ""
-        _isDonateable.value = !_homeName.value.isNullOrEmpty()
-
-        if (_isDonateable.value!!) {
-            //TODO: Connect to Database, Get Current total money of donation
-            _currentTotalDonationMoney.value = 10000000
-
-            //TODO: Connect to Database, get Current total weight of donation item
-            _currentTotalDonationGoodsWeight.value = 12
-
-            //TODO: Connect to Database, get current total expedition fee
-            if (_currentTotalDonationGoodsWeight.value != null) {
-                _currentTotalExpeditionFee.value = _currentTotalDonationGoodsWeight.value!! * 30000
-            }
-
-            //TODO: Connect to Database, get current total cost
-            if (_currentTotalDonationMoney.value != null && _currentTotalExpeditionFee.value != null) {
-                _currentTotalCost.value = _currentTotalDonationMoney.value!! + _currentTotalExpeditionFee.value!!
-            }
-        }
-    }
 
     fun setUserId(userId: Int) {
         _userId.value = userId
@@ -110,6 +90,11 @@ class DonationBoxWidgetViewModel(application: Application): ViewModel() {
                 if (_currentTotalExpeditionFee.value != null && _currentTotalDonationMoney.value != null) {
                     _currentTotalCost.value = _currentTotalDonationMoney.value!! + _currentTotalExpeditionFee.value!!
                 }
+            }
+            _donationButtonEnabled.value = if (_currentTotalCost.value != null) {
+                _currentTotalCost.value!! > 0
+            } else {
+                false
             }
         }
     }

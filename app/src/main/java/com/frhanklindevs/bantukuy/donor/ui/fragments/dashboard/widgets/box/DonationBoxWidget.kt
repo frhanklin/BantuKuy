@@ -71,6 +71,9 @@ class DonationBoxWidget : Fragment() {
         viewModel.currentTotalCost.observe(viewLifecycleOwner, {
             binding.boxDonationTotalPaymentText.text = convertToRupiah(it)
         })
+        viewModel.donationButtonEnabled.observe(viewLifecycleOwner, {
+            binding.boxBtnDonate.visibility = if (it) View.VISIBLE else View.GONE
+        })
 
         viewModel.setUserId(userId)
     }
