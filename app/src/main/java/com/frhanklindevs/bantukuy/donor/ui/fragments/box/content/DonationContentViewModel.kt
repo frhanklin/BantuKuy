@@ -191,6 +191,14 @@ class DonationContentViewModel(application: Application): ViewModel() {
         setOverview()
     }
 
+    fun updateBoxCompleted(){
+        repository.updateBoxCompleted(_boxId.value!!)
+    }
+
+    fun getUserId() : Int{
+        return _userId.value!!
+    }
+    fun getBoxId() = _userId.value?.let { repository.getUserActiveBox(it).boxId }
     companion object {
         private const val API_KEY = BantuKuyDev.API_KEY
         private const val PHOTO_URL = BantuKuyDev.PHOTO_URL

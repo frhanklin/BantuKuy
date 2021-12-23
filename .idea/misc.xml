@@ -3,6 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Abbas/All About Programming/Mobile Apps/BantuKuy/app/src/main/res/drawable/background_pay.xml" value="0.5" />
+        <entry key="..\:/Abbas/All About Programming/Mobile Apps/BantuKuy/app/src/main/res/drawable/background_popup_primary.xml" value="0.13385416666666666" />
+        <entry key="..\:/Abbas/All About Programming/Mobile Apps/BantuKuy/app/src/main/res/drawable/rounded_gradient_add.xml" value="0.13385416666666666" />
+        <entry key="..\:/Abbas/All About Programming/Mobile Apps/BantuKuy/app/src/main/res/layout/activity_login.xml" value="0.11770833333333333" />
+        <entry key="..\:/Abbas/All About Programming/Mobile Apps/BantuKuy/app/src/main/res/layout/activity_payment.xml" value="0.11770833333333333" />
+        <entry key="..\:/Abbas/All About Programming/Mobile Apps/BantuKuy/app/src/main/res/layout/activity_register.xml" value="0.11770833333333333" />
+        <entry key="..\:/Abbas/All About Programming/Mobile Apps/BantuKuy/app/src/main/res/layout/content_donation_box.xml" value="0.11770833333333333" />
+        <entry key="..\:/Abbas/All About Programming/Mobile Apps/BantuKuy/app/src/main/res/layout/fragment_donation_box_content.xml" value="0.22" />
+        <entry key="..\:/Abbas/All About Programming/Mobile Apps/BantuKuy/app/src/main/res/layout/fragment_donation_box_item_expedition.xml" value="0.11770833333333333" />
+        <entry key="..\:/Abbas/All About Programming/Mobile Apps/BantuKuy/app/src/main/res/layout/fragment_donation_box_item_goods.xml" value="0.11770833333333333" />
+        <entry key="..\:/Abbas/All About Programming/Mobile Apps/BantuKuy/app/src/main/res/layout/fragment_donation_box_item_home.xml" value="0.11770833333333333" />
+        <entry key="..\:/Abbas/All About Programming/Mobile Apps/BantuKuy/app/src/main/res/layout/fragment_donor_donation_box.xml" value="0.25" />
+        <entry key="..\:/Abbas/All About Programming/Mobile Apps/BantuKuy/app/src/main/res/layout/fragment_image_gallery.xml" value="0.11770833333333333" />
+        <entry key="..\:/Abbas/All About Programming/Mobile Apps/BantuKuy/app/src/main/res/layout/items_home.xml" value="0.11770833333333333" />
+        <entry key="..\:/Abbas/All About Programming/Mobile Apps/BantuKuy/app/src/main/res/layout/pop_up_pay.xml" value="0.33" />
+        <entry key="..\:/Abbas/All About Programming/Mobile Apps/BantuKuy/app/src/main/res/layout/popup_add.xml" value="0.25" />
+        <entry key="..\:/Abbas/All About Programming/Mobile Apps/BantuKuy/app/src/main/res/layout/popup_del.xml" value="0.25" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/drawable-v24/ic_error.xml" value="0.1574074074074074" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="..\:/Dicoding/06. Capstone Project/BantuKuy/app/src/main/res/drawable-v24/ic_loading.xml" value="0.1" />

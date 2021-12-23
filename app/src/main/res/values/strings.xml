@@ -6,6 +6,7 @@
     <string name="title_bantu_cari">Temukan Panti</string>
     <string name="orphanage">Panti Asuhan</string>
     <string name="near">Panti Terdekat</string>
+
     <string name="nursing">Panti Jompo</string>
     <string name="donor_greetings">Mau bantu panti mana hari ini?</string>
     <string name="donor_user_greetings">Hai, %s</string>
@@ -77,6 +78,8 @@
     <string name="popup_del_goods_placeholder">%s\n(%d kg)</string>
     <string name="refresh">Muat ulang</string>
     <string name="popup_del_cash_placeholder">%s\n(Rp %s)</string>
+    <string name="status_pay">Status</string>
+    <string name="confirm_pay">Konfirmasi Pembayaran</string>
 
     <string-array name="spinner_cash_categories">
         <item>Tunai</item>
